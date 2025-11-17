@@ -1,5 +1,5 @@
 import { type Verb } from '../hooks/VerbListContext';
-import VerbItem from './VerbItem';
+import VerbCard from './VerbCard';
 
 interface VerbListProps {
   verbs: Verb[];
@@ -17,7 +17,7 @@ export default function VerbList({ verbs }: VerbListProps) {
   return (
     <div className="row">
       {verbs.map((verb) => (
-        <VerbItem key={verb.infinitive} verb={verb} />
+        <VerbCard key={verb.infinitive} verb={verb} />
       ))}
     </div>
   );

@@ -1,12 +1,12 @@
 import { type Verb } from '../hooks/VerbListContext';
 
-interface VerbItemProps {
+interface VerbCardProps {
   verb: Verb;
 }
 
 const pronouns = ['yo', 'tú', 'él/ella/Ud.', 'nosotros', 'vosotros', 'ellos/ellas/Uds.'];
 
-export default function VerbItem({ verb }: VerbItemProps) {
+export default function VerbCard({ verb }: VerbCardProps) {
   const conjugation = verb.conjugation;
 
   return (
