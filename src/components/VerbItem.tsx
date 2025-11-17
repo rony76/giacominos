@@ -10,27 +10,29 @@ export default function VerbItem({ verb }: VerbItemProps) {
   const conjugation = verb.conjugation;
 
   return (
-    <div className="list-group-item">
-      <div className="d-flex flex-column w-100 justify-content-between">
-        <div className="d-flex w-100 justify-content-between">
-          <h5 className="mb-1">{verb.infinitive}</h5>
-          <p className="mb-1">{verb.translation}</p>
-        </div>
+    <div className="col-md-4 mb-3">
+      <div className="card h-100">
+        <div className="card-body">
+          <h5 className="card-title">{verb.infinitive}</h5>
+          <p className="card-text">{verb.translation}</p>
 
-        {conjugation && (
-          <small className="text-muted">
-            <table>
-              <tbody>
-                {conjugation.map((c, index) => (
-                  <tr>
-                    <td>{pronouns[index]}</td>
-                    <td>{c}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </small>
-        )}
+          {conjugation && (
+            <div className="card-text">
+              <small className="text-muted">
+                <table className="table table-sm">
+                  <tbody>
+                    {conjugation.map((c, index) => (
+                      <tr key={index}>
+                        <td>{pronouns[index]}</td>
+                        <td>{c}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </small>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

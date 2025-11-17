@@ -15,7 +15,7 @@ export default function VerbList({ verbs }: VerbListProps) {
   }
 
   return (
-    <div className="list-group">
+    <div className="row">
       {verbs.map((verb) => (
         <VerbItem key={verb.infinitive} verb={verb} />
       ))}
