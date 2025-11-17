@@ -1,0 +1,39 @@
+import { createContext, useContext, useState, type ReactNode } from 'react';
+import { allVerbs, type Verb } from '../model/Verb';
+
+interface VerbListContextType {
+  verbs: Verb[];
+  filterVerbs: (query: string) => void;
+}
+
+const VerbListContext = createContext<VerbListContextType | undefined>(undefined);
+
+export function VerbListContextProvider({ children }: { children: ReactNode }) {
+  const [verbs, setVerbs] = useState<Verb[]>(allVerbs);
+
+  const filterVerbs = (query: string) => {
+    if (query.trim() === '') {
+      setVerbs(allVerbs);
+      return;
+    }
+
+    setVerbs(
+      allVerbs.filter((verb) => verb.infinitive.includes(query) || verb.translation.includes(query))
+    );
+  };
+
+  return (
+    <VerbListContext.Provider value={{ verbs, filterVerbs }}>{children}</VerbListContext.Provider>
+  );
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+export function useVerbList() {
+  const context = useContext(VerbListContext);
+  if (context === undefined) {
+    throw new Error('useVerbList must be used within a VerbListProvider');
+  }
+  return context;
+}
+
+export type { Verb, VerbListContextType };

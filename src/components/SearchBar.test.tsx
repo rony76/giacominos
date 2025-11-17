@@ -19,10 +19,10 @@ describe('SearchBar', () => {
   it('updates input value when typing', async () => {
     const user = userEvent.setup();
     render(<SearchBar />);
-    
+
     const input = screen.getByPlaceholderText('Search...') as HTMLInputElement;
     await user.type(input, 'test query');
-    
+
     expect(input.value).toBe('test query');
   });
 
@@ -30,13 +30,13 @@ describe('SearchBar', () => {
     const user = userEvent.setup();
     const onSearch = vi.fn();
     render(<SearchBar onSearch={onSearch} />);
-    
+
     const input = screen.getByPlaceholderText('Search...');
     const button = screen.getByRole('button', { name: 'Search' });
-    
+
     await user.type(input, 'test query');
     await user.click(button);
-    
+
     expect(onSearch).toHaveBeenCalledWith('test query');
     expect(onSearch).toHaveBeenCalledTimes(1);
   });
@@ -45,24 +45,24 @@ describe('SearchBar', () => {
     const user = userEvent.setup();
     const onSearch = vi.fn();
     render(<SearchBar onSearch={onSearch} />);
-    
+
     const input = screen.getByPlaceholderText('Search...');
-    
+
     await user.type(input, 'test query{Enter}');
-    
+
     expect(onSearch).toHaveBeenCalledWith('test query');
   });
 
   it('does not throw error when onSearch is not provided', async () => {
     const user = userEvent.setup();
     render(<SearchBar />);
-    
+
     const input = screen.getByPlaceholderText('Search...') as HTMLInputElement;
     const button = screen.getByRole('button', { name: 'Search' });
-    
+
     await user.type(input, 'test query');
     await user.click(button);
-    
+
     expect(input.value).toBe('test query');
   });
 });

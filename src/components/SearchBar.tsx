@@ -21,12 +21,7 @@ export default function SearchBar({ onSearch, placeholder = 'Search...' }: Searc
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={query}
-        onChange={handleChange}
-        placeholder={placeholder}
-      />
+      <input type="text" value={query} onChange={handleChange} placeholder={placeholder} />
       <button type="submit">Search</button>
     </form>
   );
