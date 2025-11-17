@@ -7,7 +7,7 @@ export default function SearchBarWrapper() {
   const loggingFilter = (query: string) => {
     console.log('Filtering verbs with query:', query);
     filterVerbs(query);
-  }
+  };
 
   return <SearchBar onSearch={loggingFilter} placeholder="filtra..." />;
 }

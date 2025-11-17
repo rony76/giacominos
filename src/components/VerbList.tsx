@@ -1,4 +1,5 @@
 import { type Verb } from '../hooks/VerbListContext';
+import VerbItem from './VerbItem';
 
 interface VerbListProps {
   verbs: Verb[];
@@ -15,14 +16,8 @@ export default function VerbList({ verbs }: VerbListProps) {
 
   return (
     <div className="list-group">
-      {verbs.map((verb, index) => (
-        <div key={index} className="list-group-item">
-          <div className="d-flex w-100 justify-content-between">
-            <h5 className="mb-1">{verb.infinitive}</h5>
-            {verb.conjugation && <small className="text-muted">{verb.conjugation}</small>}
-          </div>
-          <p className="mb-1">{verb.translation}</p>
-        </div>
+      {verbs.map((verb) => (
+        <VerbItem key={verb.infinitive} verb={verb} />
       ))}
     </div>
   );
