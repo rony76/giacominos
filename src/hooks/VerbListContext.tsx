@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, type ReactNode } from 'react';
-import { allVerbs, type Verb } from '../model/Verb';
+import { type Verb } from '../model/Verb';
+import { allVerbs } from '../model/Verbs';
 
 interface VerbListContextType {
   verbs: Verb[];
