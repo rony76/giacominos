@@ -1,11 +1,14 @@
 import { type Verb } from './Verb';
-import { type Conjugation } from './Conjugation';
+import { type Conjugation, type Token } from './Conjugation';
 
 export abstract class BaseVerb implements Verb {
-  constructor(
-    public readonly infinitive: string,
-    public readonly translation: string
-  ) {}
+  infinitive: string;
+  translation: string;
+
+  constructor(infinitive: string, translation: string) {
+    this.infinitive = infinitive;
+    this.translation = translation;
+  }
 
   get root(): string {
     return this.infinitive.slice(0, -2);
@@ -14,13 +17,13 @@ export abstract class BaseVerb implements Verb {
 
   abstract get conjugation(): Conjugation;
 
-  protected getEnding(index: number, conjType: string): string {
+  protected getEnding(index: number, conjType: string): Token {
     const endings = {
       ar: ['o', 'as', 'a', 'amos', 'áis', 'an'],
       er: ['o', 'es', 'e', 'emos', 'éis', 'en'],
       ir: ['o', 'es', 'e', 'imos', 'ís', 'en'],
     };
 
-    return endings[conjType as keyof typeof endings][index];
+    return { type: 'ending', value: endings[conjType as keyof typeof endings][index] };
   }
 }

@@ -6,7 +6,7 @@ import SearchBar from './SearchBar';
 describe('SearchBar', () => {
   it('renders with default placeholder', () => {
     render(<SearchBar />);
-    const input = screen.getByPlaceholderText('Search...');
+    const input = screen.getByPlaceholderText('Cerca...');
     expect(input).toBeDefined();
   });
 
@@ -20,7 +20,7 @@ describe('SearchBar', () => {
     const user = userEvent.setup();
     render(<SearchBar />);
 
-    const input = screen.getByPlaceholderText('Search...') as HTMLInputElement;
+    const input = screen.getByPlaceholderText('Cerca...') as HTMLInputElement;
     await user.type(input, 'test query');
 
     expect(input.value).toBe('test query');
@@ -31,8 +31,8 @@ describe('SearchBar', () => {
     const onSearch = vi.fn();
     render(<SearchBar onSearch={onSearch} />);
 
-    const input = screen.getByPlaceholderText('Search...');
-    const button = screen.getByRole('button', { name: 'Search' });
+    const input = screen.getByPlaceholderText('Cerca...');
+    const button = screen.getByRole('button', { name: 'Cerca' });
 
     await user.type(input, 'test query');
     await user.click(button);
@@ -46,7 +46,7 @@ describe('SearchBar', () => {
     const onSearch = vi.fn();
     render(<SearchBar onSearch={onSearch} />);
 
-    const input = screen.getByPlaceholderText('Search...');
+    const input = screen.getByPlaceholderText('Cerca...');
 
     await user.type(input, 'test query{Enter}');
 
@@ -57,8 +57,8 @@ describe('SearchBar', () => {
     const user = userEvent.setup();
     render(<SearchBar />);
 
-    const input = screen.getByPlaceholderText('Search...') as HTMLInputElement;
-    const button = screen.getByRole('button', { name: 'Search' });
+    const input = screen.getByPlaceholderText('Cerca...') as HTMLInputElement;
+    const button = screen.getByRole('button', { name: 'Cerca' });
 
     await user.type(input, 'test query');
     await user.click(button);

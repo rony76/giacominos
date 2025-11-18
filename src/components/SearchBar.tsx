@@ -5,7 +5,7 @@ interface SearchBarProps {
   placeholder?: string;
 }
 
-export default function SearchBar({ onSearch, placeholder = 'Search...' }: SearchBarProps) {
+export default function SearchBar({ onSearch, placeholder = 'Cerca...' }: SearchBarProps) {
   const [query, setQuery] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -22,7 +22,9 @@ export default function SearchBar({ onSearch, placeholder = 'Search...' }: Searc
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" value={query} onChange={handleChange} placeholder={placeholder} />
-      <button type="submit">Search</button>
+      <button type="submit" name="search">
+        Cerca
+      </button>
     </form>
   );
 }

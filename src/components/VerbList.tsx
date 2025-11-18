@@ -9,7 +9,7 @@ export default function VerbList({ verbs }: VerbListProps) {
   if (verbs.length === 0) {
     return (
       <div className="alert alert-info" role="alert">
-        No verbs to display
+        Non ci sono verbi da visualizzare
       </div>
     );
   }

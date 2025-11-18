@@ -1,5 +1,5 @@
 import { type Verb } from './Verb';
-import { type Conjugation } from './Conjugation';
+import { type Conjugation, type Term, type Token } from './Conjugation';
 import { BaseVerb } from './BaseVerb';
 
 export class RegularVerb extends BaseVerb {
@@ -17,12 +17,9 @@ export class RegularVerb extends BaseVerb {
 
   get conjugation(): Conjugation {
     const conjType = this.infinitive.slice(-2);
-    const root = { type: 'root', value: this.root };
+    const root: Token = { type: 'root', value: this.root };
 
-    return [0, 1, 2, 3, 4, 5].map((i) => [
-      root,
-      { type: 'ending', value: this.getEnding(i, conjType) },
-    ]);
+    return [0, 1, 2, 3, 4, 5].map((i) => [root, this.getEnding(i, conjType)] as Term);
   }
 }
 
