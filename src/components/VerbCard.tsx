@@ -27,18 +27,18 @@ export default function VerbCard({ verb }: VerbCardProps) {
           <p className="card-text">{verb.translation}</p>
 
           <div className="card-text">
-            <small className="text-muted">
-              <table className="conjugation-table">
-                <tbody>
-                  {conjugation.map((c, index) => (
-                    <tr key={index}>
-                      <td>{pronouns[index]}</td>
-                      <td>{printTerm(c, verb.infinitive, index)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </small>
+            <table className="conjugation-table">
+              <tbody>
+                {conjugation.map((c, index) => (
+                  <tr key={index}>
+                    <td>
+                      <small className="text-muted">{pronouns[index]}</small>
+                    </td>
+                    <td>{printTerm(c, verb.infinitive, index)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
