@@ -1,5 +1,5 @@
 import { type Verb } from './Verb';
-import { type Conjugation, type Term } from './Conjugation';
+import { type Conjugation } from './Conjugation';
 import { BaseVerb } from './BaseVerb';
 
 export class RegularVerb extends BaseVerb {
