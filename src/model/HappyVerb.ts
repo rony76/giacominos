@@ -1,5 +1,6 @@
-import { type Conjugation, type Term } from './Conjugation';
+import { type Term } from './Conjugation';
 import { XxxooxVerb } from './XxxooxVerb';
+import { type Verb } from './Verb';
 
 export class HappyVerb extends XxxooxVerb {
   constructor(infinitive: string, translation: string) {
