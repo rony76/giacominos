@@ -9,6 +9,13 @@
 .verb-card .card-title {
   font-weight: bold;
   color: #333;
+  display: inline-block;
+}
+
+.verb-card .card-subtitle {
+  font-size: 200%;
+  padding-left: 0.5rem;
+  display: inline-block;
 }
 
 .verb-card .card-text {

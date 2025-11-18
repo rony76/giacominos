@@ -2,13 +2,12 @@ import { type Verb } from './Verb';
 import { type Conjugation } from './Conjugation';
 
 export abstract class BaseVerb implements Verb {
-  infinitive: string;
-  translation: string;
+  constructor(
+    public readonly infinitive: string,
+    public readonly translation: string
+  ) {}
 
-  constructor(infinitive: string, translation: string) {
-    this.infinitive = infinitive;
-    this.translation = translation;
-  }
+  abstract get emoji(): string;
 
   abstract get conjugation(): Conjugation;
 

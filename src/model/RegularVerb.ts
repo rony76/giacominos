@@ -11,6 +11,10 @@ export class RegularVerb extends BaseVerb {
     return this.infinitive.slice(0, -2);
   }
 
+  get emoji(): string {
+    return '✅';
+  }
+
   get conjugation(): Conjugation {
     const ending = this.infinitive.slice(-2);
     const root = this.root;

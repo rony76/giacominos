@@ -14,12 +14,14 @@ export function VerbListContextProvider({ children }: { children: ReactNode }) {
 
   const filterVerbs = (query: string) => {
     if (query.trim() === '') {
-      setVerbs(allVerbs);
+      setVerbs(allVerbs.slice(0, 12));
       return;
     }
 
     setVerbs(
-      allVerbs.filter((verb) => verb.infinitive.includes(query) || verb.translation.includes(query))
+      allVerbs
+        .filter((verb) => verb.infinitive.includes(query) || verb.translation.includes(query))
+        .slice(0, 12)
     );
   };
 
