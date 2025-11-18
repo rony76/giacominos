@@ -16,10 +16,9 @@ export class RegularVerb extends BaseVerb {
   }
 
   get conjugation(): Conjugation {
-    const conjType = this.infinitive.slice(-2);
     const root: Token = { type: 'root', value: this.root };
 
-    return [0, 1, 2, 3, 4, 5].map((i) => [root, this.getEnding(i, conjType)] as Term);
+    return [0, 1, 2, 3, 4, 5].map((i) => [root, this.getEnding(i)] as Term);
   }
 }
 

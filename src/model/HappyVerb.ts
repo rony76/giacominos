@@ -11,18 +11,17 @@ export class HappyVerb extends BaseVerb {
   }
 
   get conjugation(): Conjugation {
-    const conjType = this.infinitive.slice(-2);
     const root: Term = [{ type: 'root', value: this.root }];
 
     const modifiedRoot = this.createModifiedRoot(this.root);
 
     return [
-      [...modifiedRoot, this.getEnding(0, conjType)],
-      [...modifiedRoot, this.getEnding(1, conjType)],
-      [...modifiedRoot, this.getEnding(2, conjType)],
-      [...root, this.getEnding(3, conjType)],
-      [...root, this.getEnding(4, conjType)],
-      [...modifiedRoot, this.getEnding(5, conjType)],
+      [...modifiedRoot, this.getEnding(0)],
+      [...modifiedRoot, this.getEnding(1)],
+      [...modifiedRoot, this.getEnding(2)],
+      [...root, this.getEnding(3)],
+      [...root, this.getEnding(4)],
+      [...modifiedRoot, this.getEnding(5)],
     ];
   }
 
