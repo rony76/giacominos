@@ -1,4 +1,5 @@
 import { type Verb } from './Verb';
+import { type Conjugation } from './Conjugation';
 
 export abstract class BaseVerb implements Verb {
   infinitive: string;
@@ -8,6 +9,8 @@ export abstract class BaseVerb implements Verb {
     this.infinitive = infinitive;
     this.translation = translation;
   }
+
+  abstract get conjugation(): Conjugation;
 
   abstract get root(): string;
 }

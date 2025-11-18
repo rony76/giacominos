@@ -1,0 +1,49 @@
+.verb-card {
+  margin-bottom: 1rem;
+}
+
+.verb-card .card {
+  height: 100%;
+}
+
+.verb-card .card-title {
+  font-weight: bold;
+  color: #333;
+}
+
+.verb-card .card-text {
+  margin-bottom: 0.75rem;
+}
+
+.verb-card .conjugation-table {
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+.verb-card .conjugation-table td {
+  padding: 0.25rem 0.5rem;
+  border: none;
+}
+
+.verb-card .conjugation-table td:first-child {
+  font-weight: 500;
+  color: #666;
+  width: 40%;
+}
+
+.verb-card .root {
+}
+
+.verb-card .alternateRoot {
+  color: #cc6600;
+}
+
+.verb-card .ending {
+  font-weight: bold;
+  color: #004000;
+}
+
+.verb-card .alternateEnding {
+  font-weight: bold;
+  color: #cc0066;
+}
