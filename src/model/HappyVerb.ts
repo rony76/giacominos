@@ -1,7 +1,7 @@
 import { type Conjugation, type Term } from './Conjugation';
-import { BaseVerb } from './BaseVerb';
+import { XxxooxVerb } from './XxxooxVerb';
 
-export class HappyVerb extends BaseVerb {
+export class HappyVerb extends XxxooxVerb {
   constructor(infinitive: string, translation: string) {
     super(infinitive, translation);
   }
@@ -10,22 +10,7 @@ export class HappyVerb extends BaseVerb {
     return '😊';
   }
 
-  get conjugation(): Conjugation {
-    const root: Term = [{ type: 'root', value: this.root }];
-
-    const modifiedRoot = this.createModifiedRoot(this.root);
-
-    return [
-      [...modifiedRoot, this.getEnding(0)],
-      [...modifiedRoot, this.getEnding(1)],
-      [...modifiedRoot, this.getEnding(2)],
-      [...root, this.getEnding(3)],
-      [...root, this.getEnding(4)],
-      [...modifiedRoot, this.getEnding(5)],
-    ];
-  }
-
-  private createModifiedRoot(root: string): Term {
+  protected createModifiedRoot(root: string): Term {
     const lastEIndex = root.lastIndexOf('e');
     if (lastEIndex === -1) {
       return [{ type: 'root', value: root }];
