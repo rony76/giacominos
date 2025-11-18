@@ -16,23 +16,13 @@ export class RegularVerb extends BaseVerb {
   }
 
   get conjugation(): Conjugation {
-    const ending = this.infinitive.slice(-2);
-    const root = this.root;
-    return [
-      this.createTerm(root, 'o'),
-      this.createTerm(root, ending === 'ar' ? 'as' : 'es'),
-      this.createTerm(root, ending === 'ar' ? 'a' : 'e'),
-      this.createTerm(root, ending === 'ar' ? 'amos' : ending === 'er' ? 'emos' : 'imos'),
-      this.createTerm(root, ending === 'ar' ? 'áis' : ending === 'er' ? 'éis' : 'ís'),
-      this.createTerm(root, ending === 'ar' ? 'an' : 'en'),
-    ];
-  }
+    const conjType = this.infinitive.slice(-2);
+    const root = { type: 'root', value: this.root };
 
-  private createTerm(root: string, ending: string): Term {
-    return [
-      { type: 'root', value: root },
-      { type: 'ending', value: ending },
-    ];
+    return [0, 1, 2, 3, 4, 5].map((i) => [
+      root,
+      { type: 'ending', value: this.getEnding(i, conjType) },
+    ]);
   }
 }
 
@@ -44,7 +34,7 @@ export const regularVerbs: Verb[] = [
   ['mirar', 'guardare'],
   ['vender', 'vendere'],
   ['comprar', 'comprare'],
-  ['esperar ', 'aspettare'],
+  ['esperar', 'aspettare'],
   ['regalar', 'regalare'],
   ['creer', 'credere'],
   ['enseñar', 'insegnare'],
