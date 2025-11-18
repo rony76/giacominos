@@ -8,8 +8,12 @@ interface VerbCardProps {
 
 const pronouns = ['yo', 'tú', 'él/ella/Ud.', 'nosotros', 'vosotros', 'ellos/ellas/Uds.'];
 
-function printTerm(t: Term) {
-  return t.map((token) => <span className={token.type}>{token.value}</span>);
+function printTerm(t: Term, verbKey: string, rowIndex: number) {
+  return t.map((token, index) => (
+    <span key={`${verbKey}-${rowIndex}-${index}`} className={token.type}>
+      {token.value}
+    </span>
+  ));
 }
 
 export default function VerbCard({ verb }: VerbCardProps) {
@@ -29,7 +33,7 @@ export default function VerbCard({ verb }: VerbCardProps) {
                   {conjugation.map((c, index) => (
                     <tr key={index}>
                       <td>{pronouns[index]}</td>
-                      <td>{printTerm(c)}</td>
+                      <td>{printTerm(c, verb.infinitive, index)}</td>
                     </tr>
                   ))}
                 </tbody>
