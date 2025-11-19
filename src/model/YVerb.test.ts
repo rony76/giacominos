@@ -31,22 +31,22 @@ describe('YVerb', () => {
 
       expect(conjugation[0]).toEqual([
         { type: 'root', value: 'constru' },
-        { type: 'alternateRoot', value: 'y' },
+        { type: 'alternateRoot', value: 'i => y' },
         { type: 'ending', value: 'o' },
       ]);
       expect(conjugation[1]).toEqual([
         { type: 'root', value: 'constru' },
-        { type: 'alternateRoot', value: 'y' },
+        { type: 'alternateRoot', value: 'i => y' },
         { type: 'ending', value: 'es' },
       ]);
       expect(conjugation[2]).toEqual([
         { type: 'root', value: 'constru' },
-        { type: 'alternateRoot', value: 'y' },
+        { type: 'alternateRoot', value: 'i => y' },
         { type: 'ending', value: 'e' },
       ]);
       expect(conjugation[5]).toEqual([
         { type: 'root', value: 'constru' },
-        { type: 'alternateRoot', value: 'y' },
+        { type: 'alternateRoot', value: 'i => y' },
         { type: 'ending', value: 'en' },
       ]);
     });

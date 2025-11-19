@@ -19,7 +19,7 @@ export class HappyVerb extends XxxooxVerb {
 
     return [
       { type: 'root', value: root.slice(0, lastEIndex) },
-      { type: 'alternateRoot', value: 'ie' },
+      { type: 'alternateRoot', value: 'e => ie' },
       { type: 'root', value: root.slice(lastEIndex + 1) },
     ];
   }

@@ -31,25 +31,25 @@ describe('SadVerb', () => {
 
       expect(conjugation[0]).toEqual([
         { type: 'root', value: 'j' },
-        { type: 'alternateRoot', value: 'ue' },
+        { type: 'alternateRoot', value: 'u => ue' },
         { type: 'root', value: 'g' },
         { type: 'ending', value: 'o' },
       ]);
       expect(conjugation[1]).toEqual([
         { type: 'root', value: 'j' },
-        { type: 'alternateRoot', value: 'ue' },
+        { type: 'alternateRoot', value: 'u => ue' },
         { type: 'root', value: 'g' },
         { type: 'ending', value: 'as' },
       ]);
       expect(conjugation[2]).toEqual([
         { type: 'root', value: 'j' },
-        { type: 'alternateRoot', value: 'ue' },
+        { type: 'alternateRoot', value: 'u => ue' },
         { type: 'root', value: 'g' },
         { type: 'ending', value: 'a' },
       ]);
       expect(conjugation[5]).toEqual([
         { type: 'root', value: 'j' },
-        { type: 'alternateRoot', value: 'ue' },
+        { type: 'alternateRoot', value: 'u => ue' },
         { type: 'root', value: 'g' },
         { type: 'ending', value: 'an' },
       ]);
@@ -65,25 +65,25 @@ describe('SadVerb', () => {
 
       expect(conjugation[0]).toEqual([
         { type: 'root', value: 's' },
-        { type: 'alternateRoot', value: 'ue' },
+        { type: 'alternateRoot', value: 'o => ue' },
         { type: 'root', value: 'n' },
         { type: 'ending', value: 'o' },
       ]);
       expect(conjugation[1]).toEqual([
         { type: 'root', value: 's' },
-        { type: 'alternateRoot', value: 'ue' },
+        { type: 'alternateRoot', value: 'o => ue' },
         { type: 'root', value: 'n' },
         { type: 'ending', value: 'as' },
       ]);
       expect(conjugation[2]).toEqual([
         { type: 'root', value: 's' },
-        { type: 'alternateRoot', value: 'ue' },
+        { type: 'alternateRoot', value: 'o => ue' },
         { type: 'root', value: 'n' },
         { type: 'ending', value: 'a' },
       ]);
       expect(conjugation[5]).toEqual([
         { type: 'root', value: 's' },
-        { type: 'alternateRoot', value: 'ue' },
+        { type: 'alternateRoot', value: 'o => ue' },
         { type: 'root', value: 'n' },
         { type: 'ending', value: 'an' },
       ]);

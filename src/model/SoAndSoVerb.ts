@@ -19,7 +19,7 @@ export class SoAndSoVerb extends XxxooxVerb {
 
     return [
       { type: 'root', value: root.slice(0, lastEIndex) },
-      { type: 'alternateRoot', value: 'i' },
+      { type: 'alternateRoot', value: 'e => i' },
       { type: 'root', value: root.slice(lastEIndex + 1) },
     ];
   }

@@ -9,11 +9,27 @@ interface VerbCardProps {
 const pronouns = ['yo', 'tú', 'él/ella/Ud.', 'nosotros', 'vosotros', 'ellos/ellas/Uds.'];
 
 function printTerm(t: Term, verbKey: string, rowIndex: number) {
-  return t.map((token, index) => (
-    <span key={`${verbKey}-${rowIndex}-${index}`} className={token.type}>
-      {token.value}
-    </span>
-  ));
+  return (<div className="term-tokens">
+  {t.map((token, index) => {
+      if (token.type === 'alternateRoot') {
+          const [before, after] = token.value.split(' => ');
+        return (
+          <div key={`${verbKey}-${rowIndex}-${index}`} className="alternateRootWrapper">
+              <div className="alternateRoot">
+                <div className="prevRoot">{before}</div>
+                <div className="newRoot">{after}</div>
+              </div>
+          </div>
+        );
+      }
+      return (
+        <div key={`${verbKey}-${rowIndex}-${index}`} className={token.type}>
+          {token.value}
+        </div>
+      );
+    })}
+  </div>);
+
 }
 
 export default function VerbCard({ verb }: VerbCardProps) {

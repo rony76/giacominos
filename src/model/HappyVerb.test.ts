@@ -35,25 +35,25 @@ describe('HappyVerb', () => {
 
       expect(conjugation[0]).toEqual([
         { type: 'root', value: 't' },
-        { type: 'alternateRoot', value: 'ie' },
+        { type: 'alternateRoot', value: 'e => ie' },
         { type: 'root', value: 'mbl' },
         { type: 'ending', value: 'o' },
       ]);
       expect(conjugation[1]).toEqual([
         { type: 'root', value: 't' },
-        { type: 'alternateRoot', value: 'ie' },
+        { type: 'alternateRoot', value: 'e => ie' },
         { type: 'root', value: 'mbl' },
         { type: 'ending', value: 'as' },
       ]);
       expect(conjugation[2]).toEqual([
         { type: 'root', value: 't' },
-        { type: 'alternateRoot', value: 'ie' },
+        { type: 'alternateRoot', value: 'e => ie' },
         { type: 'root', value: 'mbl' },
         { type: 'ending', value: 'a' },
       ]);
       expect(conjugation[5]).toEqual([
         { type: 'root', value: 't' },
-        { type: 'alternateRoot', value: 'ie' },
+        { type: 'alternateRoot', value: 'e => ie' },
         { type: 'root', value: 'mbl' },
         { type: 'ending', value: 'an' },
       ]);
@@ -73,25 +73,25 @@ describe('HappyVerb', () => {
 
       expect(conjugation[0]).toEqual([
         { type: 'root', value: 's' },
-        { type: 'alternateRoot', value: 'ie' },
+        { type: 'alternateRoot', value: 'e => ie' },
         { type: 'root', value: 'nt' },
         { type: 'ending', value: 'o' },
       ]);
       expect(conjugation[1]).toEqual([
         { type: 'root', value: 's' },
-        { type: 'alternateRoot', value: 'ie' },
+        { type: 'alternateRoot', value: 'e => ie' },
         { type: 'root', value: 'nt' },
         { type: 'ending', value: 'es' },
       ]);
       expect(conjugation[2]).toEqual([
         { type: 'root', value: 's' },
-        { type: 'alternateRoot', value: 'ie' },
+        { type: 'alternateRoot', value: 'e => ie' },
         { type: 'root', value: 'nt' },
         { type: 'ending', value: 'e' },
       ]);
       expect(conjugation[5]).toEqual([
         { type: 'root', value: 's' },
-        { type: 'alternateRoot', value: 'ie' },
+        { type: 'alternateRoot', value: 'e => ie' },
         { type: 'root', value: 'nt' },
         { type: 'ending', value: 'en' },
       ]);

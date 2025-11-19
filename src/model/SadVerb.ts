@@ -21,7 +21,7 @@ export class SadVerb extends XxxooxVerb {
 
     return [
       { type: 'root', value: root.slice(0, replaceIndex) },
-      { type: 'alternateRoot', value: 'ue' },
+      { type: 'alternateRoot', value: root[replaceIndex] + ' => ue' },
       { type: 'root', value: root.slice(replaceIndex + 1) },
     ];
   }

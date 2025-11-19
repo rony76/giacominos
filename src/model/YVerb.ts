@@ -14,7 +14,7 @@ export class YVerb extends XxxooxVerb {
   protected createModifiedRoot(root: string): Term {
     return [
       { type: 'root', value: root },
-      { type: 'alternateRoot', value: 'y' },
+      { type: 'alternateRoot', value: 'i => y' },
     ];
   }
 }

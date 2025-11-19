@@ -37,29 +37,33 @@
   font-weight: 500;
   color: #666;
   width: 40%;
+  text-align: right;
+}
+
+.term-tokens > div {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.5em;
+  overflow: hidden;
+  font-size: 1.2rem;
 }
 
 .verb-card .root {
 }
 
-.verb-card .alternateRoot {
-  font-weight: bold;
-  color: #cc6600;
-}
-
-.verb-card .ending {
-  font-weight: bold;
+.ending {
+  font-weight: 600;
   color: #004000;
-  animation: fadeIn 1s ease-in-out;
+  animation: slideIn 1.5s ease-in-out;
 }
 
 .verb-card .alternateEnding {
-  font-weight: bold;
+  font-weight: 600;
   color: #cc0066;
-  animation: fadeIn 1.5s ease-in-out;
+  animation: slideIn 2s ease-in-out;
 }
 
-@keyframes fadeIn {
+@keyframes slideIn {
   from {
     opacity: 0.2;
     padding-left: 2em;
@@ -67,5 +71,41 @@
   to {
     opacity: 1;
     padding-left: 0;
+  }
+}
+
+.alternateRoot {
+  font-weight: 600;
+  position: relative;
+  animation: root-alternation ease-in-out 2.5s;
+  animation-fill-mode: forwards;
+  text-align: center;
+}
+
+.alternateRoot .prevRoot {
+  color: #cc6600;
+}
+
+.alternateRoot .newRoot {
+  color: #0d9a0d;
+}
+
+@keyframes root-alternation {
+  from {
+    top: 0;
+  }
+
+  to {
+    top: -1.5em;
+  }
+
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: #ffc0c0;
+  }
+  100% {
+    background-color: transparent;
   }
 }
