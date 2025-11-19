@@ -39,7 +39,7 @@ const elegir: Verb = {
   conjugation: [
     [
       { type: 'root', value: 'el' },
-      { type: 'alternateRoot', value: 'ig => ij' },
+      { type: 'alternateRoot', value: 'eg => ij' },
       { type: 'ending', value: 'o' },
     ],
     [
@@ -109,8 +109,9 @@ const seguir: Verb = {
   ],
 };
 
-const standardVerbs = [['pedir', 'chiedere']].map(
-  ([infinitive, translation]) => new SoAndSoVerb(infinitive, translation)
-);
+const standardVerbs = [
+  ['pedir', 'chiedere'],
+  ['reir', 'ridere'],
+].map(([infinitive, translation]) => new SoAndSoVerb(infinitive, translation));
 
 export const soAndSoVerbs: Verb[] = [...standardVerbs, elegir, seguir];
