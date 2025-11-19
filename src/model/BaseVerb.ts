@@ -14,7 +14,7 @@ export abstract class BaseVerb implements Verb {
     this.conjType = this.infinitive.slice(-2);
   }
 
-  get root(): string {
+  protected get root(): string {
     return this.infinitive.slice(0, -2);
   }
   abstract get emoji(): string;
