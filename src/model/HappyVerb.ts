@@ -36,4 +36,5 @@ export const happyVerbs: Verb[] = [
   ['sentir', 'sentire'],
   ['mentir', 'mentire'],
   ['preferir', 'preferire'],
+  ['cerrar', 'chiudere'],
 ].map(([infinitive, translation]) => new HappyVerb(infinitive, translation));
