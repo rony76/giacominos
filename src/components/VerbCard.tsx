@@ -1,4 +1,4 @@
-import { type Verb } from '../hooks/VerbListContext';
+import { type Verb } from '../model/Verb.ts';
 import { type Term } from '../model/Conjugation';
 import './VerbCard.css';
 
@@ -8,14 +8,14 @@ interface VerbCardProps {
 
 const pronouns = ['yo', 'tú', 'él/ella/Ud.', 'nosotros', 'vosotros', 'ellos/ellas/Uds.'];
 
-function printTerm(t: Term, verbKey: string, rowIndex: number) {
+function printTerm(t: Term, verbKey: string) {
   return (
     <div className="term-tokens">
       {t.map((token, index) => {
         if (token.type === 'alternateRoot') {
           const [before, after] = token.value.split(' => ');
           return (
-            <div key={`${verbKey}-${rowIndex}-${index}`} className="alternateRootWrapper">
+            <div key={`${verbKey}-${index}`} className="alternateRootWrapper">
               <div className="alternateRoot">
                 <div className="prevRoot">{before}</div>
                 <div className="newRoot">{after}</div>
@@ -23,8 +23,9 @@ function printTerm(t: Term, verbKey: string, rowIndex: number) {
             </div>
           );
         }
+
         return (
-          <div key={`${verbKey}-${rowIndex}-${index}`} className={token.type}>
+          <div key={`${verbKey}-${index}`} className={token.type}>
             {token.value}
           </div>
         );
@@ -52,7 +53,7 @@ export default function VerbCard({ verb }: VerbCardProps) {
                     <td>
                       <small className="text-muted">{pronouns[index]}</small>
                     </td>
-                    <td>{printTerm(c, verb.infinitive, index)}</td>
+                    <td>{printTerm(c, verb.infinitive)}</td>
                   </tr>
                 ))}
               </tbody>

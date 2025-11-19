@@ -77,9 +77,9 @@
 .alternateRoot {
   font-weight: 600;
   position: relative;
+  text-align: center;
   animation: root-alternation ease-in-out 2.5s;
   animation-fill-mode: forwards;
-  text-align: center;
 }
 
 .alternateRoot .prevRoot {
@@ -91,21 +91,18 @@
 }
 
 @keyframes root-alternation {
-  from {
-    top: 0;
-  }
-
-  to {
-    top: -1.5em;
-  }
-
   0% {
     background-color: transparent;
+    top: 0;
   }
-  50% {
+  30% {
     background-color: #ffc0c0;
+  }
+  60% {
+    top: 0;
   }
   100% {
     background-color: transparent;
+    top: -1.5em;
   }
 }
