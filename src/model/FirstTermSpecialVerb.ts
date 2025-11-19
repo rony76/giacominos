@@ -28,13 +28,73 @@ export class FirstTermSpecialVerb extends BaseVerb {
   }
 }
 
+function oyVerb(infinitive: string, translation: string): Verb {
+  const subRoot = infinitive.slice(0, -2);
+  const firstTerm: Term = [
+    { type: 'root', value: subRoot },
+    { type: 'alternateEnding', value: 'oy' },
+  ];
+  return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
+}
+
+function cerCirVerb(infinitive: string, translation: string): Verb {
+  const subRoot = infinitive.slice(0, -3);
+  const firstTerm: Term = [
+    { type: 'root', value: subRoot },
+    { type: 'alternateRoot', value: 'c => zc' },
+    { type: 'ending', value: 'o' },
+  ];
+  return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
+}
+
+function gVerb(infinitive: string, translation: string): Verb {
+  const subRoot = infinitive.slice(0, -2);
+  const firstTerm: Term = [
+    { type: 'root', value: subRoot },
+    { type: 'alternateEnding', value: 'go' },
+  ];
+  return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
+}
+
+function igVerb(infinitive: string, translation: string): Verb {
+  const subRoot = infinitive.slice(0, -2);
+  const firstTerm: Term = [
+    { type: 'root', value: subRoot },
+    { type: 'alternateEnding', value: 'igo' },
+  ];
+  return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
+}
+
+function firstSpecialVerb(infinitive: string, translation: string, specialFirstPerson: string): Verb {
+  const firstTerm: Term = [
+    { type: 'alternateEnding', value: specialFirstPerson },
+  ];
+  return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
+}
+
 export const firstTermSpecialVerbs: Verb[] = [
-  new FirstTermSpecialVerb('estar', 'essere/stare', [
-    { type: 'root', value: 'est' },
-    { type: 'alternateEnding', value: 'oy' },
+  oyVerb('estar', 'essere/stare'),
+  oyVerb('dar', 'dare'),
+  cerCirVerb('crecer', 'crescere'),
+  cerCirVerb('nacer', 'nascere'),
+  cerCirVerb('parecer', 'sembrare'),
+  gVerb('salir', 'uscire'),
+  gVerb('poner', 'mettere'),
+  gVerb('valer', 'valere'),
+  igVerb('traer', 'prendere'),
+  igVerb('caer', 'cadere'),
+  new FirstTermSpecialVerb('ver', 'vedere', [
+    { type: 'alternateRoot', value: 'v => ve' },
+    { type: 'ending', value: 'o' },
   ]),
-  new FirstTermSpecialVerb('dar', 'dare', [
-    { type: 'root', value: 'd' },
-    { type: 'alternateEnding', value: 'oy' },
+  firstSpecialVerb('saber', 'sapere', 'sé'),
+  new FirstTermSpecialVerb('caber', 'fittare', [
+    { type: 'alternateRoot', value: 'cab => quep' },
+    { type: 'ending', value: 'o' },
+  ]),
+  new FirstTermSpecialVerb('hacer', 'fare', [
+    { type: 'root', value: 'ha' },
+    { type: 'alternateRoot', value: 'c => g' },
+    { type: 'ending', value: 'o' },
   ]),
 ];
