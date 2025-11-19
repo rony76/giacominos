@@ -18,6 +18,8 @@ export function VerbListContextProvider({ children }: { children: ReactNode }) {
       return;
     }
 
+    query = query.trim().toLowerCase();
+
     setVerbs(
       allVerbs
         .filter((verb) => verb.infinitive.includes(query) || verb.translation.includes(query))
