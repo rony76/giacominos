@@ -18,7 +18,7 @@ function printTerm(t: Term, verbKey: string, animated: boolean, setAnimated: (v:
           return (
             <div key={`${verbKey}-${index}`} className="alternateRootWrapper">
               <div className="alternateRoot" onAnimationEnd={() => setAnimated(true)}>
-                <div className="prevRoot">{!animated && before || 'i'}</div>
+                <div className="prevRoot">{(!animated && before) || 'i'}</div>
                 <div className="newRoot">{after}</div>
               </div>
             </div>
@@ -36,7 +36,7 @@ function printTerm(t: Term, verbKey: string, animated: boolean, setAnimated: (v:
 }
 
 export default function VerbCard({ verb }: VerbCardProps) {
-  const [animated, setAnimated] = useState<boolean>(false)
+  const [animated, setAnimated] = useState<boolean>(false);
   const conjugation = verb.conjugation;
 
   return (

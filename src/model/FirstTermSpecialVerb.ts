@@ -65,10 +65,12 @@ function igVerb(infinitive: string, translation: string): Verb {
   return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
 }
 
-function firstSpecialVerb(infinitive: string, translation: string, specialFirstPerson: string): Verb {
-  const firstTerm: Term = [
-    { type: 'alternateEnding', value: specialFirstPerson },
-  ];
+function firstSpecialVerb(
+  infinitive: string,
+  translation: string,
+  specialFirstPerson: string
+): Verb {
+  const firstTerm: Term = [{ type: 'alternateEnding', value: specialFirstPerson }];
   return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
 }
 
