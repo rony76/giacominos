@@ -1,6 +1,7 @@
 import { type Verb } from '../model/Verb.ts';
 import { type Term } from '../model/Conjugation';
 import './VerbCard.css';
+import { useState } from 'react';
 
 interface VerbCardProps {
   verb: Verb;
@@ -8,7 +9,7 @@ interface VerbCardProps {
 
 const pronouns = ['yo', 'tú', 'él/ella/Ud.', 'nosotros', 'vosotros', 'ellos/ellas/Uds.'];
 
-function printTerm(t: Term, verbKey: string) {
+function printTerm(t: Term, verbKey: string, animated: boolean, setAnimated: (v: boolean) => void) {
   return (
     <div className="term-tokens">
       {t.map((token, index) => {
@@ -16,8 +17,8 @@ function printTerm(t: Term, verbKey: string) {
           const [before, after] = token.value.split(' => ');
           return (
             <div key={`${verbKey}-${index}`} className="alternateRootWrapper">
-              <div className="alternateRoot">
-                <div className="prevRoot">{before}</div>
+              <div className="alternateRoot" onAnimationEnd={() => setAnimated(true)}>
+                <div className="prevRoot">{!animated && before || 'i'}</div>
                 <div className="newRoot">{after}</div>
               </div>
             </div>
@@ -35,6 +36,7 @@ function printTerm(t: Term, verbKey: string) {
 }
 
 export default function VerbCard({ verb }: VerbCardProps) {
+  const [animated, setAnimated] = useState<boolean>(false)
   const conjugation = verb.conjugation;
 
   return (
@@ -53,7 +55,7 @@ export default function VerbCard({ verb }: VerbCardProps) {
                     <td>
                       <small className="text-muted">{pronouns[index]}</small>
                     </td>
-                    <td>{printTerm(c, verb.infinitive)}</td>
+                    <td>{printTerm(c, verb.infinitive, animated, setAnimated)}</td>
                   </tr>
                 ))}
               </tbody>
