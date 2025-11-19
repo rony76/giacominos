@@ -11,7 +11,8 @@ export class SadVerb extends XxxooxVerb {
     return '😢';
   }
 
-  protected createModifiedRoot(root: string): Term {
+  protected createModifiedRoot(): Term {
+    const root = this.root;
     const lastUIndex = root.lastIndexOf('u');
     const lastOIndex = root.lastIndexOf('o');
     const replaceIndex = Math.max(lastUIndex, lastOIndex);

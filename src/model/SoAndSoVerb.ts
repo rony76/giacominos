@@ -4,6 +4,19 @@ import { type Verb } from './Verb';
 
 const soAndSoEmoji = '😐';
 
+export function soAndSoRoot(root: string): Term {
+  const lastEIndex = root.lastIndexOf('e');
+  if (lastEIndex === -1) {
+    return [{ type: 'root', value: root }];
+  }
+
+  return [
+    { type: 'root', value: root.slice(0, lastEIndex) },
+    { type: 'alternateRoot', value: 'e => i' },
+    { type: 'root', value: root.slice(lastEIndex + 1) },
+  ];
+}
+
 export class SoAndSoVerb extends XxxooxVerb {
   constructor(infinitive: string, translation: string) {
     super(infinitive, translation);
@@ -13,17 +26,9 @@ export class SoAndSoVerb extends XxxooxVerb {
     return soAndSoEmoji;
   }
 
-  protected createModifiedRoot(root: string): Term {
-    const lastEIndex = root.lastIndexOf('e');
-    if (lastEIndex === -1) {
-      return [{ type: 'root', value: root }];
-    }
-
-    return [
-      { type: 'root', value: root.slice(0, lastEIndex) },
-      { type: 'alternateRoot', value: 'e => i' },
-      { type: 'root', value: root.slice(lastEIndex + 1) },
-    ];
+  protected createModifiedRoot(): Term {
+    const root = this.root;
+    return soAndSoRoot(root);
   }
 }
 

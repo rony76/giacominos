@@ -2,6 +2,19 @@ import { type Term } from './Conjugation';
 import { XxxooxVerb } from './XxxooxVerb';
 import { type Verb } from './Verb';
 
+export function happyRoot(root: string): Term {
+  const lastEIndex = root.lastIndexOf('e');
+  if (lastEIndex === -1) {
+    return [{ type: 'root', value: root }];
+  }
+
+  return [
+    { type: 'root', value: root.slice(0, lastEIndex) },
+    { type: 'alternateRoot', value: 'e => ie' },
+    { type: 'root', value: root.slice(lastEIndex + 1) },
+  ];
+}
+
 export class HappyVerb extends XxxooxVerb {
   constructor(infinitive: string, translation: string) {
     super(infinitive, translation);
@@ -11,17 +24,8 @@ export class HappyVerb extends XxxooxVerb {
     return '😊';
   }
 
-  protected createModifiedRoot(root: string): Term {
-    const lastEIndex = root.lastIndexOf('e');
-    if (lastEIndex === -1) {
-      return [{ type: 'root', value: root }];
-    }
-
-    return [
-      { type: 'root', value: root.slice(0, lastEIndex) },
-      { type: 'alternateRoot', value: 'e => ie' },
-      { type: 'root', value: root.slice(lastEIndex + 1) },
-    ];
+  protected createModifiedRoot(): Term {
+    return happyRoot(this.root);
   }
 }
 

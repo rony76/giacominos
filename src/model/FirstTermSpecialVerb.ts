@@ -47,12 +47,16 @@ function cerCirVerb(infinitive: string, translation: string): Verb {
   return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
 }
 
-function gVerb(infinitive: string, translation: string): Verb {
-  const subRoot = infinitive.slice(0, -2);
-  const firstTerm: Term = [
-    { type: 'root', value: subRoot },
+export function gFirstTerm(root: string): Term {
+  return [
+    { type: 'root', value: root },
     { type: 'alternateEnding', value: 'go' },
   ];
+}
+
+function gVerb(infinitive: string, translation: string): Verb {
+  const subRoot = infinitive.slice(0, -2);
+  const firstTerm = gFirstTerm(subRoot);
   return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
 }
 

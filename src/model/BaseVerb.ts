@@ -1,6 +1,10 @@
 import { type Verb } from './Verb';
 import { type Conjugation, type Token } from './Conjugation';
 
+function removeTilde(s: string) {
+  return s.replace('í', 'i').replace('é', 'e').replace('á', 'a');
+}
+
 export abstract class BaseVerb implements Verb {
   infinitive: string;
   translation: string;

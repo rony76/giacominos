@@ -5,6 +5,7 @@ import { sadVerbs } from './SadVerb';
 import { soAndSoVerbs } from './SoAndSoVerb';
 import { yVerbs } from './YVerb';
 import { firstTermSpecialVerbs } from './FirstTermSpecialVerb';
+import { twoIrregularitiesVerbs } from './TwoIrregularitiesVerb.ts';
 
 export const allVerbs: Verb[] = [
   ...regularVerbs,
@@ -13,4 +14,5 @@ export const allVerbs: Verb[] = [
   ...soAndSoVerbs,
   ...yVerbs,
   ...firstTermSpecialVerbs,
+  ...twoIrregularitiesVerbs,
 ].sort((a, b) => a.infinitive.localeCompare(b.infinitive));

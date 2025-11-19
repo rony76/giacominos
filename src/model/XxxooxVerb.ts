@@ -5,7 +5,7 @@ export abstract class XxxooxVerb extends BaseVerb {
   get conjugation(): Conjugation {
     const root: Term = [{ type: 'root', value: this.root }];
 
-    const modifiedRoot = this.createModifiedRoot(this.root);
+    const modifiedRoot = this.createModifiedRoot();
 
     return [
       [...modifiedRoot, this.getEnding(0)],
@@ -17,5 +17,5 @@ export abstract class XxxooxVerb extends BaseVerb {
     ];
   }
 
-  protected abstract createModifiedRoot(root: string): Term;
+  protected abstract createModifiedRoot(): Term;
 }
