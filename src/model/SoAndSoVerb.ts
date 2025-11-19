@@ -35,6 +35,7 @@ export class SoAndSoVerb extends XxxooxVerb {
 const elegir: Verb = {
   infinitive: 'elegir',
   translation: 'scegliere',
+  isReflexive: false,
   emoji: soAndSoEmoji,
   conjugation: [
     [
@@ -74,6 +75,7 @@ const seguir: Verb = {
   infinitive: 'seguir',
   translation: 'seguire',
   emoji: soAndSoEmoji,
+  isReflexive: false,
   conjugation: [
     [
       { type: 'root', value: 's' },

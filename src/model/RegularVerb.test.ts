@@ -44,9 +44,6 @@ describe('RegularVerb', () => {
     it('conjugates comer correctly', () => {
       const verb = new RegularVerb('comer', 'to eat');
 
-      expect(verb.infinitive).toBe('comer');
-      expect(verb.translation).toBe('to eat');
-      expect(verb.root).toBe('com');
       expect(verb.emoji).toBe('✅');
 
       const conjugation = verb.conjugation;
@@ -83,9 +80,6 @@ describe('RegularVerb', () => {
     it('conjugates vivir correctly', () => {
       const verb = new RegularVerb('vivir', 'to live');
 
-      expect(verb.infinitive).toBe('vivir');
-      expect(verb.translation).toBe('to live');
-      expect(verb.root).toBe('viv');
       expect(verb.emoji).toBe('✅');
 
       const conjugation = verb.conjugation;

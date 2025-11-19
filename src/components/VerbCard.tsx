@@ -7,7 +7,8 @@ interface VerbCardProps {
   verb: Verb;
 }
 
-const pronouns = ['yo', 'tú', 'él/ella/Ud.', 'nosotros', 'vosotros', 'ellos/ellas/Uds.'];
+const subjects = ['yo', 'tú', 'él/ella/Ud.', 'nosotros', 'vosotros', 'ellos/ellas/Uds.'];
+const reflexiveSubjects = ['me', 'te', 'se', 'nos', 'os', 'se'];
 
 function printTerm(t: Term, verbKey: string, animated: boolean, setAnimated: (v: boolean) => void) {
   return (
@@ -53,7 +54,10 @@ export default function VerbCard({ verb }: VerbCardProps) {
                 {conjugation.map((c, index) => (
                   <tr key={index}>
                     <td>
-                      <small className="text-muted">{pronouns[index]}</small>
+                      <small className="text-muted">
+                        {subjects[index]}
+                        {verb.isReflexive && ' ' + reflexiveSubjects[index]}
+                      </small>
                     </td>
                     <td>{printTerm(c, verb.infinitive, animated, setAnimated)}</td>
                   </tr>

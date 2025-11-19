@@ -33,6 +33,7 @@ export const happyVerbs: Verb[] = [
   ['temblar', 'tremare'],
   ['querer', 'desiderare'],
   ['perder', 'perdere'],
+  ['arrepentirse', 'pentirsi'],
   ['sentir', 'sentire'],
   ['mentir', 'mentire'],
   ['preferir', 'preferire'],

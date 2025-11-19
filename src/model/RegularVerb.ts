@@ -7,10 +7,6 @@ export class RegularVerb extends BaseVerb {
     super(infinitive, translation);
   }
 
-  get root(): string {
-    return this.infinitive.slice(0, -2);
-  }
-
   get emoji(): string {
     return '✅';
   }

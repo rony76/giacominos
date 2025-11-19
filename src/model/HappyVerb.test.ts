@@ -96,5 +96,40 @@ describe('HappyVerb', () => {
         { type: 'ending', value: 'en' },
       ]);
     });
+
+    it('conjugates arrepentirse correctly', () => {
+      const verb = new HappyVerb('arrepentirse', 'pentirsi');
+
+      expect(verb.emoji).toBe('😊');
+      expect(verb.isReflexive).toBe(true);
+
+      const conjugation = verb.conjugation;
+      expect(conjugation).toHaveLength(6);
+
+      expect(conjugation[0]).toEqual([
+        { type: 'root', value: 'arrep' },
+        { type: 'alternateRoot', value: 'e => ie' },
+        { type: 'root', value: 'nt' },
+        { type: 'ending', value: 'o' },
+      ]);
+      expect(conjugation[1]).toEqual([
+        { type: 'root', value: 'arrep' },
+        { type: 'alternateRoot', value: 'e => ie' },
+        { type: 'root', value: 'nt' },
+        { type: 'ending', value: 'es' },
+      ]);
+      expect(conjugation[2]).toEqual([
+        { type: 'root', value: 'arrep' },
+        { type: 'alternateRoot', value: 'e => ie' },
+        { type: 'root', value: 'nt' },
+        { type: 'ending', value: 'e' },
+      ]);
+      expect(conjugation[5]).toEqual([
+        { type: 'root', value: 'arrep' },
+        { type: 'alternateRoot', value: 'e => ie' },
+        { type: 'root', value: 'nt' },
+        { type: 'ending', value: 'en' },
+      ]);
+    });
   });
 });
