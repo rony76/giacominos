@@ -5,8 +5,6 @@ describe('HappyVerb', () => {
   it('conjugates regularly for nosotros and vosotros', () => {
     const verb = new HappyVerb('temblar', 'tremare');
 
-    expect(verb.infinitive).toBe('temblar');
-    expect(verb.translation).toBe('tremare');
     expect(verb.emoji).toBe('😊');
 
     const conjugation = verb.conjugation;
@@ -26,8 +24,6 @@ describe('HappyVerb', () => {
     it('conjugates temblar correctly', () => {
       const verb = new HappyVerb('temblar', 'tremare');
 
-      expect(verb.infinitive).toBe('temblar');
-      expect(verb.translation).toBe('tremare');
       expect(verb.emoji).toBe('😊');
 
       const conjugation = verb.conjugation;

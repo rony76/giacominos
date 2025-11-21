@@ -1,4 +1,4 @@
-import { type Verb } from '../hooks/VerbListContext';
+import { type Verb } from '../model/Verb.ts';
 import VerbCard from './VerbCard';
 
 interface VerbListProps {

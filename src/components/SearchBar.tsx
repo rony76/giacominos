@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type ChangeEvent, type FormEvent, useState } from 'react';
 
 interface SearchBarProps {
   onSearch?: (query: string) => void;
@@ -8,14 +8,14 @@ interface SearchBarProps {
 export default function SearchBar({ onSearch, placeholder = 'Cerca...' }: SearchBarProps) {
   const [query, setQuery] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (onSearch) {
       onSearch(query);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 

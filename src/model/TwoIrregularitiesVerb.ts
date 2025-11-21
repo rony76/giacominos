@@ -6,8 +6,8 @@ import { happyRoot } from './HappyVerb.ts';
 import { soAndSoRoot } from './SoAndSoVerb.ts';
 
 export class YxxooxVerb extends BaseVerb {
-  private firstTermBuilder: (root: string) => Term;
-  private modifiedRootBuilder: (root: string) => Term;
+  private readonly firstTermBuilder: (root: string) => Term;
+  private readonly modifiedRootBuilder: (root: string) => Term;
 
   constructor(
     infinitive: string,
