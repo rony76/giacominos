@@ -7,3 +7,7 @@ export interface Verb {
   isReflexive: boolean;
   conjugation: Conjugation;
 }
+
+export function removeTilde(s: string) {
+  return s.replace('í', 'i').replace('é', 'e').replace('á', 'a');
+}

@@ -1,6 +1,5 @@
-import { type Verb } from './Verb';
+import { removeTilde, type Verb } from './Verb';
 import { type Conjugation, type Token } from './Conjugation';
-import { removeTilde } from './Verbs.ts';
 
 export abstract class BaseVerb implements Verb {
   infinitive: string;
