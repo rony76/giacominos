@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, type ReactNode } from 'react';
 import { type Verb } from '../model/Verb';
-import { allVerbs } from '../model/Verbs';
+import { allVerbs, removeTilde } from '../model/Verbs';
 
 interface VerbListContextType {
   verbs: Verb[];
@@ -22,7 +22,9 @@ export function VerbListContextProvider({ children }: { children: ReactNode }) {
 
     setVerbs(
       allVerbs
-        .filter((verb) => verb.infinitive.includes(query) || verb.translation.includes(query))
+        .filter(
+          (verb) => removeTilde(verb.infinitive).includes(query) || verb.translation.includes(query)
+        )
         .slice(0, 12)
     );
   };

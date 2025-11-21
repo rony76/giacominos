@@ -16,3 +16,7 @@ export const allVerbs: Verb[] = [
   ...firstTermSpecialVerbs,
   ...twoIrregularitiesVerbs,
 ].sort((a, b) => a.infinitive.localeCompare(b.infinitive));
+
+export function removeTilde(s: string) {
+  return s.replace('í', 'i').replace('é', 'e').replace('á', 'a');
+}
