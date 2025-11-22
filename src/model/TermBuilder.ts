@@ -45,3 +45,7 @@ export function termWithRoot(root: string): TermBuilder {
 export function termWithAltRoot(before: string, after: string): TermBuilder {
   return new TermBuilder().addAltRoot(before, after);
 }
+
+export function fullIrregularTerm(fullTerm: string): Term {
+  return [{ type: 'altEnding', value: fullTerm }];
+}

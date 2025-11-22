@@ -1,7 +1,7 @@
 import { type Conjugation, type Term } from './Conjugation';
 import { BaseVerb } from './BaseVerb';
 import { type Verb } from './Verb';
-import { termWithAltRoot, termWithRoot } from './TermBuilder.ts';
+import { fullIrregularTerm, termWithAltRoot, termWithRoot } from './TermBuilder.ts';
 
 export class FirstTermSpecialVerb extends BaseVerb {
   private readonly firstTerm: Term;
@@ -62,7 +62,7 @@ function firstSpecialVerb(
   translation: string,
   specialFirstPerson: string
 ): Verb {
-  const firstTerm: Term = [{ type: 'altEnding', value: specialFirstPerson }];
+  const firstTerm: Term = fullIrregularTerm(specialFirstPerson);
   return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
 }
 
