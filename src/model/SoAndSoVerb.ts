@@ -1,20 +1,18 @@
-import { type Term } from './Conjugation';
+import { TermBuilder, termWithRoot } from './Conjugation';
 import { XxxooxVerb } from './XxxooxVerb';
 import { type Verb } from './Verb';
 
 const soAndSoEmoji = '😐';
 
-export function soAndSoRoot(root: string): Term {
+export function soAndSoRoot(root: string): TermBuilder {
   const lastEIndex = root.lastIndexOf('e');
   if (lastEIndex === -1) {
-    return [{ type: 'root', value: root }];
+    throw new Error('Cannot create modified root for so-and-so verb without "e" in root');
   }
 
-  return [
-    { type: 'root', value: root.slice(0, lastEIndex) },
-    { type: 'alternateRoot', value: 'e => i' },
-    { type: 'root', value: root.slice(lastEIndex + 1) },
-  ];
+  return termWithRoot(root.slice(0, lastEIndex))
+    .addAltRoot('e', 'i')
+    .addRoot(root.slice(lastEIndex + 1));
 }
 
 export class SoAndSoVerb extends XxxooxVerb {
@@ -26,9 +24,8 @@ export class SoAndSoVerb extends XxxooxVerb {
     return soAndSoEmoji;
   }
 
-  protected createModifiedRoot(): Term {
-    const root = this.root;
-    return soAndSoRoot(root);
+  protected createModifiedRoot(): TermBuilder {
+    return soAndSoRoot(this.root);
   }
 }
 
@@ -38,76 +35,27 @@ const elegir: Verb = {
   isReflexive: false,
   emoji: soAndSoEmoji,
   conjugation: [
-    [
-      { type: 'root', value: 'el' },
-      { type: 'alternateRoot', value: 'eg => ij' },
-      { type: 'ending', value: 'o' },
-    ],
-    [
-      { type: 'root', value: 'el' },
-      { type: 'alternateRoot', value: 'e => i' },
-      { type: 'root', value: 'g' },
-      { type: 'ending', value: 'es' },
-    ],
-    [
-      { type: 'root', value: 'el' },
-      { type: 'alternateRoot', value: 'e => i' },
-      { type: 'root', value: 'g' },
-      { type: 'ending', value: 'e' },
-    ],
-    [
-      { type: 'root', value: 'eleg' },
-      { type: 'ending', value: 'imos' },
-    ],
-    [
-      { type: 'root', value: 'eleg' },
-      { type: 'ending', value: 'ís' },
-    ],
-    [
-      { type: 'root', value: 'el' },
-      { type: 'alternateRoot', value: 'e => i' },
-      { type: 'root', value: 'g' },
-      { type: 'ending', value: 'en' },
-    ],
+    termWithRoot('el').addAltRoot('eg', 'ij').endWith('o'),
+    termWithRoot('el').addAltRoot('e', 'i').addRoot('g').endWith('es'),
+    termWithRoot('el').addAltRoot('e', 'i').addRoot('g').endWith('e'),
+    termWithRoot('eleg').endWith('imos'),
+    termWithRoot('eleg').endWith('ís'),
+    termWithRoot('el').addAltRoot('e', 'i').addRoot('g').endWith('en'),
   ],
 };
+
 const seguir: Verb = {
   infinitive: 'seguir',
   translation: 'seguire',
   emoji: soAndSoEmoji,
   isReflexive: false,
   conjugation: [
-    [
-      { type: 'root', value: 's' },
-      { type: 'alternateRoot', value: 'egu => ig' },
-      { type: 'ending', value: 'o' },
-    ],
-    [
-      { type: 'root', value: 's' },
-      { type: 'alternateRoot', value: 'e => i' },
-      { type: 'root', value: 'gu' },
-      { type: 'ending', value: 'es' },
-    ],
-    [
-      { type: 'root', value: 's' },
-      { type: 'alternateRoot', value: 'e => i' },
-      { type: 'root', value: 'gu' },
-      { type: 'ending', value: 'e' },
-    ],
-    [
-      { type: 'root', value: 'segu' },
-      { type: 'ending', value: 'imos' },
-    ],
-    [
-      { type: 'root', value: 'segu' },
-      { type: 'ending', value: 'ís' },
-    ],
-    [
-      { type: 'root', value: 's' },
-      { type: 'alternateRoot', value: 'e => i' },
-      { type: 'root', value: 'gu' },
-      { type: 'ending', value: 'en' },
-    ],
+    termWithRoot('s').addAltRoot('egu', 'ig').endWith('o'),
+    termWithRoot('s').addAltRoot('e', 'i').addRoot('gu').endWith('es'),
+    termWithRoot('s').addAltRoot('e', 'i').addRoot('gu').endWith('e'),
+    termWithRoot('segu').endWith('imos'),
+    termWithRoot('segu').endWith('ís'),
+    termWithRoot('s').addAltRoot('e', 'i').addRoot('gu').endWith('en'),
   ],
 };
 

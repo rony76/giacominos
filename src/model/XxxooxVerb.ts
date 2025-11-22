@@ -1,21 +1,21 @@
 import { BaseVerb } from './BaseVerb';
-import { type Conjugation, type Term } from './Conjugation';
+import { type Conjugation, TermBuilder, termWithRoot } from './Conjugation';
 
 export abstract class XxxooxVerb extends BaseVerb {
   get conjugation(): Conjugation {
-    const root: Term = [{ type: 'root', value: this.root }];
+    const root: TermBuilder = termWithRoot(this.root);
 
     const modifiedRoot = this.createModifiedRoot();
 
     return [
-      [...modifiedRoot, this.getEnding(0)],
-      [...modifiedRoot, this.getEnding(1)],
-      [...modifiedRoot, this.getEnding(2)],
-      [...root, this.getEnding(3)],
-      [...root, this.getEnding(4)],
-      [...modifiedRoot, this.getEnding(5)],
+      modifiedRoot.endWith(this.getEndSuffix(0)),
+      modifiedRoot.endWith(this.getEndSuffix(1)),
+      modifiedRoot.endWith(this.getEndSuffix(2)),
+      root.endWith(this.getEndSuffix(3)),
+      root.endWith(this.getEndSuffix(4)),
+      modifiedRoot.endWith(this.getEndSuffix(5)),
     ];
   }
 
-  protected abstract createModifiedRoot(): Term;
+  protected abstract createModifiedRoot(): TermBuilder;
 }

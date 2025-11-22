@@ -57,7 +57,7 @@
   animation: slideIn 1.5s ease-in-out;
 }
 
-.verb-card .alternateEnding {
+.verb-card .altEnding {
   font-weight: 600;
   color: #cc0066;
   animation: slideIn 2s ease-in-out;
@@ -74,7 +74,7 @@
   }
 }
 
-.alternateRoot {
+.altRoot {
   font-weight: 600;
   position: relative;
   text-align: center;
@@ -82,11 +82,11 @@
   animation-fill-mode: forwards;
 }
 
-.alternateRoot .prevRoot {
+.altRoot .prevRoot {
   color: #cc6600;
 }
 
-.alternateRoot .newRoot {
+.altRoot .newRoot {
   color: #0d9a0d;
 }
 

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { twoIrregularitiesVerbs } from './TwoIrregularitiesVerb.ts';
 import type { Verb } from './Verb.ts';
+import { termWithRoot, termWithAltRoot } from './Conjugation.ts';
 
 describe('Two irregularities verb', () => {
   function findVerb(inf: string): Verb {
@@ -18,14 +19,8 @@ describe('Two irregularities verb', () => {
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);
 
-    expect(conjugation[3]).toEqual([
-      { type: 'root', value: 'ten' },
-      { type: 'ending', value: 'emos' },
-    ]);
-    expect(conjugation[4]).toEqual([
-      { type: 'root', value: 'ten' },
-      { type: 'ending', value: 'éis' },
-    ]);
+    expect(conjugation[3]).toEqual(termWithRoot('ten').endWith('emos'));
+    expect(conjugation[4]).toEqual(termWithRoot('ten').endWith('éis'));
   });
 
   it('conjugates tener correctly (turning I into IE and using G on the first)', () => {
@@ -34,16 +29,10 @@ describe('Two irregularities verb', () => {
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);
 
-    expect(conjugation[0]).toEqual([
-      { type: 'root', value: 'ten' },
-      { type: 'alternateEnding', value: 'go' },
-    ]);
-    expect(conjugation[1]).toEqual([
-      { type: 'root', value: 't' },
-      { type: 'alternateRoot', value: 'e => ie' },
-      { type: 'root', value: 'n' },
-      { type: 'ending', value: 'es' },
-    ]);
+    expect(conjugation[0]).toEqual(termWithRoot('ten').endWithAlt('go'));
+    expect(conjugation[1]).toEqual(
+      termWithRoot('t').addAltRoot('e', 'ie').addRoot('n').endWith('es')
+    );
   });
 
   it('conjugates venir correctly (turning I into IE and using G on the first)', () => {
@@ -52,16 +41,10 @@ describe('Two irregularities verb', () => {
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);
 
-    expect(conjugation[0]).toEqual([
-      { type: 'root', value: 'ven' },
-      { type: 'alternateEnding', value: 'go' },
-    ]);
-    expect(conjugation[1]).toEqual([
-      { type: 'root', value: 'v' },
-      { type: 'alternateRoot', value: 'e => ie' },
-      { type: 'root', value: 'n' },
-      { type: 'ending', value: 'es' },
-    ]);
+    expect(conjugation[0]).toEqual(termWithRoot('ven').endWithAlt('go'));
+    expect(conjugation[1]).toEqual(
+      termWithRoot('v').addAltRoot('e', 'ie').addRoot('n').endWith('es')
+    );
   });
 
   it('conjugates decir correctly (turning E into I and using G on the first)', () => {
@@ -70,17 +53,10 @@ describe('Two irregularities verb', () => {
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);
 
-    expect(conjugation[0]).toEqual([
-      { type: 'root', value: 'd' },
-      { type: 'alternateRoot', value: 'ec => i' },
-      { type: 'alternateEnding', value: 'go' },
-    ]);
-    expect(conjugation[1]).toEqual([
-      { type: 'root', value: 'd' },
-      { type: 'alternateRoot', value: 'e => i' },
-      { type: 'root', value: 'c' },
-      { type: 'ending', value: 'es' },
-    ]);
+    expect(conjugation[0]).toEqual(termWithRoot('d').addAltRoot('ec', 'i').endWithAlt('go'));
+    expect(conjugation[1]).toEqual(
+      termWithRoot('d').addAltRoot('e', 'i').addRoot('c').endWith('es')
+    );
   });
 
   it('conjugates oír correctly (turning I into Y and using G on the first)', () => {
@@ -89,13 +65,7 @@ describe('Two irregularities verb', () => {
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);
 
-    expect(conjugation[0]).toEqual([
-      { type: 'alternateRoot', value: 'o => oi' },
-      { type: 'alternateEnding', value: 'go' },
-    ]);
-    expect(conjugation[1]).toEqual([
-      { type: 'alternateRoot', value: 'o => oy' },
-      { type: 'ending', value: 'es' },
-    ]);
+    expect(conjugation[0]).toEqual(termWithAltRoot('o', 'oi').endWithAlt('go'));
+    expect(conjugation[1]).toEqual(termWithAltRoot('o', 'oy').endWith('es'));
   });
 });

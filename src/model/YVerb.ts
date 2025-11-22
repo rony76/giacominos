@@ -1,12 +1,9 @@
-import { type Term } from './Conjugation';
+import { termWithRoot, type TermBuilder } from './Conjugation';
 import { XxxooxVerb } from './XxxooxVerb';
 import { type Verb } from './Verb';
 
-export function yRoot(root: string): Term {
-  return [
-    { type: 'root', value: root },
-    { type: 'alternateRoot', value: 'i => y' },
-  ];
+export function yRoot(root: string): TermBuilder {
+  return termWithRoot(root).addAltRoot('i', 'y');
 }
 
 export class YVerb extends XxxooxVerb {
@@ -18,7 +15,7 @@ export class YVerb extends XxxooxVerb {
     return 'Ⓨ';
   }
 
-  protected createModifiedRoot(): Term {
+  protected createModifiedRoot(): TermBuilder {
     return yRoot(this.root);
   }
 }

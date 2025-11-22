@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { HappyVerb } from './HappyVerb';
+import { termWithRoot } from './Conjugation.ts';
 
 describe('HappyVerb', () => {
   it('conjugates regularly for nosotros and vosotros', () => {
@@ -10,14 +11,8 @@ describe('HappyVerb', () => {
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);
 
-    expect(conjugation[3]).toEqual([
-      { type: 'root', value: 'tembl' },
-      { type: 'ending', value: 'amos' },
-    ]);
-    expect(conjugation[4]).toEqual([
-      { type: 'root', value: 'tembl' },
-      { type: 'ending', value: 'áis' },
-    ]);
+    expect(conjugation[3]).toEqual(termWithRoot('tembl').endWith('amos'));
+    expect(conjugation[4]).toEqual(termWithRoot('tembl').endWith('áis'));
   });
 
   describe('AR verbs', () => {
@@ -29,30 +24,18 @@ describe('HappyVerb', () => {
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);
 
-      expect(conjugation[0]).toEqual([
-        { type: 'root', value: 't' },
-        { type: 'alternateRoot', value: 'e => ie' },
-        { type: 'root', value: 'mbl' },
-        { type: 'ending', value: 'o' },
-      ]);
-      expect(conjugation[1]).toEqual([
-        { type: 'root', value: 't' },
-        { type: 'alternateRoot', value: 'e => ie' },
-        { type: 'root', value: 'mbl' },
-        { type: 'ending', value: 'as' },
-      ]);
-      expect(conjugation[2]).toEqual([
-        { type: 'root', value: 't' },
-        { type: 'alternateRoot', value: 'e => ie' },
-        { type: 'root', value: 'mbl' },
-        { type: 'ending', value: 'a' },
-      ]);
-      expect(conjugation[5]).toEqual([
-        { type: 'root', value: 't' },
-        { type: 'alternateRoot', value: 'e => ie' },
-        { type: 'root', value: 'mbl' },
-        { type: 'ending', value: 'an' },
-      ]);
+      expect(conjugation[0]).toEqual(
+        termWithRoot('t').addAltRoot('e', 'ie').addRoot('mbl').endWith('o')
+      );
+      expect(conjugation[1]).toEqual(
+        termWithRoot('t').addAltRoot('e', 'ie').addRoot('mbl').endWith('as')
+      );
+      expect(conjugation[2]).toEqual(
+        termWithRoot('t').addAltRoot('e', 'ie').addRoot('mbl').endWith('a')
+      );
+      expect(conjugation[5]).toEqual(
+        termWithRoot('t').addAltRoot('e', 'ie').addRoot('mbl').endWith('an')
+      );
     });
   });
 
@@ -67,30 +50,18 @@ describe('HappyVerb', () => {
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);
 
-      expect(conjugation[0]).toEqual([
-        { type: 'root', value: 's' },
-        { type: 'alternateRoot', value: 'e => ie' },
-        { type: 'root', value: 'nt' },
-        { type: 'ending', value: 'o' },
-      ]);
-      expect(conjugation[1]).toEqual([
-        { type: 'root', value: 's' },
-        { type: 'alternateRoot', value: 'e => ie' },
-        { type: 'root', value: 'nt' },
-        { type: 'ending', value: 'es' },
-      ]);
-      expect(conjugation[2]).toEqual([
-        { type: 'root', value: 's' },
-        { type: 'alternateRoot', value: 'e => ie' },
-        { type: 'root', value: 'nt' },
-        { type: 'ending', value: 'e' },
-      ]);
-      expect(conjugation[5]).toEqual([
-        { type: 'root', value: 's' },
-        { type: 'alternateRoot', value: 'e => ie' },
-        { type: 'root', value: 'nt' },
-        { type: 'ending', value: 'en' },
-      ]);
+      expect(conjugation[0]).toEqual(
+        termWithRoot('s').addAltRoot('e', 'ie').addRoot('nt').endWith('o')
+      );
+      expect(conjugation[1]).toEqual(
+        termWithRoot('s').addAltRoot('e', 'ie').addRoot('nt').endWith('es')
+      );
+      expect(conjugation[2]).toEqual(
+        termWithRoot('s').addAltRoot('e', 'ie').addRoot('nt').endWith('e')
+      );
+      expect(conjugation[5]).toEqual(
+        termWithRoot('s').addAltRoot('e', 'ie').addRoot('nt').endWith('en')
+      );
     });
 
     it('conjugates arrepentirse correctly', () => {
@@ -102,30 +73,18 @@ describe('HappyVerb', () => {
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);
 
-      expect(conjugation[0]).toEqual([
-        { type: 'root', value: 'arrep' },
-        { type: 'alternateRoot', value: 'e => ie' },
-        { type: 'root', value: 'nt' },
-        { type: 'ending', value: 'o' },
-      ]);
-      expect(conjugation[1]).toEqual([
-        { type: 'root', value: 'arrep' },
-        { type: 'alternateRoot', value: 'e => ie' },
-        { type: 'root', value: 'nt' },
-        { type: 'ending', value: 'es' },
-      ]);
-      expect(conjugation[2]).toEqual([
-        { type: 'root', value: 'arrep' },
-        { type: 'alternateRoot', value: 'e => ie' },
-        { type: 'root', value: 'nt' },
-        { type: 'ending', value: 'e' },
-      ]);
-      expect(conjugation[5]).toEqual([
-        { type: 'root', value: 'arrep' },
-        { type: 'alternateRoot', value: 'e => ie' },
-        { type: 'root', value: 'nt' },
-        { type: 'ending', value: 'en' },
-      ]);
+      expect(conjugation[0]).toEqual(
+        termWithRoot('arrep').addAltRoot('e', 'ie').addRoot('nt').endWith('o')
+      );
+      expect(conjugation[1]).toEqual(
+        termWithRoot('arrep').addAltRoot('e', 'ie').addRoot('nt').endWith('es')
+      );
+      expect(conjugation[2]).toEqual(
+        termWithRoot('arrep').addAltRoot('e', 'ie').addRoot('nt').endWith('e')
+      );
+      expect(conjugation[5]).toEqual(
+        termWithRoot('arrep').addAltRoot('e', 'ie').addRoot('nt').endWith('en')
+      );
     });
   });
 });

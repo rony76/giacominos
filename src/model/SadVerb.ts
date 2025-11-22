@@ -1,4 +1,4 @@
-import { type Term } from './Conjugation';
+import { termWithRoot, TermBuilder } from './Conjugation';
 import { XxxooxVerb } from './XxxooxVerb';
 import { type Verb } from './Verb';
 
@@ -11,20 +11,18 @@ export class SadVerb extends XxxooxVerb {
     return '😢';
   }
 
-  protected createModifiedRoot(): Term {
+  protected createModifiedRoot(): TermBuilder {
     const root = this.root;
     const lastUIndex = root.lastIndexOf('u');
     const lastOIndex = root.lastIndexOf('o');
     const replaceIndex = Math.max(lastUIndex, lastOIndex);
     if (replaceIndex === -1) {
-      return [{ type: 'root', value: root }];
+      throw new Error('Cannot create modified root for sad verb without "u" or "o" in root');
     }
 
-    return [
-      { type: 'root', value: root.slice(0, replaceIndex) },
-      { type: 'alternateRoot', value: root[replaceIndex] + ' => ue' },
-      { type: 'root', value: root.slice(replaceIndex + 1) },
-    ];
+    return termWithRoot(root.slice(0, replaceIndex))
+      .addAltRoot(root[replaceIndex], 'ue')
+      .addRoot(root.slice(replaceIndex + 1));
   }
 }
 

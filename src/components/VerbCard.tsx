@@ -14,11 +14,11 @@ function printTerm(t: Term, verbKey: string, animated: boolean, setAnimated: (v:
   return (
     <div className="term-tokens">
       {t.map((token, index) => {
-        if (token.type === 'alternateRoot') {
+        if (token.type === 'altRoot') {
           const [before, after] = token.value.split(' => ');
           return (
             <div key={`${verbKey}-${index}`} className="alternateRootWrapper">
-              <div className="alternateRoot" onAnimationEnd={() => setAnimated(true)}>
+              <div className="altRoot" onAnimationEnd={() => setAnimated(true)}>
                 <div className="prevRoot">{(!animated && before) || 'i'}</div>
                 <div className="newRoot">{after}</div>
               </div>

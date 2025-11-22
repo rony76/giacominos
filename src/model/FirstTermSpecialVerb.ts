@@ -1,6 +1,7 @@
 import { type Conjugation, type Term } from './Conjugation';
 import { BaseVerb } from './BaseVerb';
 import { type Verb } from './Verb';
+import { termWithRoot, termWithAltRoot } from './Conjugation.ts';
 
 export class FirstTermSpecialVerb extends BaseVerb {
   private readonly firstTerm: Term;
@@ -15,43 +16,33 @@ export class FirstTermSpecialVerb extends BaseVerb {
   }
 
   get conjugation(): Conjugation {
-    const root: Term = [{ type: 'root', value: this.root }];
+    const root = termWithRoot(this.root);
 
     return [
       this.firstTerm,
-      [...root, this.getEnding(1)],
-      [...root, this.getEnding(2)],
-      [...root, this.getEnding(3)],
-      [...root, this.getEnding(4)],
-      [...root, this.getEnding(5)],
+      root.endWith(this.getEndSuffix(1)),
+      root.endWith(this.getEndSuffix(2)),
+      root.endWith(this.getEndSuffix(3)),
+      root.endWith(this.getEndSuffix(4)),
+      root.endWith(this.getEndSuffix(5)),
     ];
   }
 }
 
 function oyVerb(infinitive: string, translation: string): Verb {
   const subRoot = infinitive.slice(0, -2);
-  const firstTerm: Term = [
-    { type: 'root', value: subRoot },
-    { type: 'alternateEnding', value: 'oy' },
-  ];
+  const firstTerm: Term = termWithRoot(subRoot).endWith('oy');
   return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
 }
 
 function cerCirVerb(infinitive: string, translation: string): Verb {
   const subRoot = infinitive.slice(0, -3);
-  const firstTerm: Term = [
-    { type: 'root', value: subRoot },
-    { type: 'alternateRoot', value: 'c => zc' },
-    { type: 'ending', value: 'o' },
-  ];
+  const firstTerm: Term = termWithRoot(subRoot).addAltRoot('c', 'zc').endWith('o');
   return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
 }
 
 export function gFirstTerm(root: string): Term {
-  return [
-    { type: 'root', value: root },
-    { type: 'alternateEnding', value: 'go' },
-  ];
+  return termWithRoot(root).endWithAlt('go');
 }
 
 function gVerb(infinitive: string, translation: string): Verb {
@@ -62,10 +53,7 @@ function gVerb(infinitive: string, translation: string): Verb {
 
 function igVerb(infinitive: string, translation: string): Verb {
   const subRoot = infinitive.slice(0, -2);
-  const firstTerm: Term = [
-    { type: 'root', value: subRoot },
-    { type: 'alternateEnding', value: 'igo' },
-  ];
+  const firstTerm = termWithRoot(subRoot).endWithAlt('go');
   return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
 }
 
@@ -74,7 +62,7 @@ function firstSpecialVerb(
   translation: string,
   specialFirstPerson: string
 ): Verb {
-  const firstTerm: Term = [{ type: 'alternateEnding', value: specialFirstPerson }];
+  const firstTerm: Term = [{ type: 'altEnding', value: specialFirstPerson }];
   return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
 }
 
@@ -89,18 +77,8 @@ export const firstTermSpecialVerbs: Verb[] = [
   gVerb('valer', 'valere'),
   igVerb('traer', 'prendere'),
   igVerb('caer', 'cadere'),
-  new FirstTermSpecialVerb('ver', 'vedere', [
-    { type: 'alternateRoot', value: 'v => ve' },
-    { type: 'ending', value: 'o' },
-  ]),
+  new FirstTermSpecialVerb('ver', 'vedere', termWithAltRoot('v', 've').endWith('o')),
   firstSpecialVerb('saber', 'sapere', 'sé'),
-  new FirstTermSpecialVerb('caber', 'fittare', [
-    { type: 'alternateRoot', value: 'cab => quep' },
-    { type: 'ending', value: 'o' },
-  ]),
-  new FirstTermSpecialVerb('hacer', 'fare', [
-    { type: 'root', value: 'ha' },
-    { type: 'alternateRoot', value: 'c => g' },
-    { type: 'ending', value: 'o' },
-  ]),
+  new FirstTermSpecialVerb('caber', 'fittare', termWithAltRoot('cab', 'quep').endWith('o')),
+  new FirstTermSpecialVerb('hacer', 'fare', termWithRoot('ha').addAltRoot('c', 'g').endWith('o')),
 ];

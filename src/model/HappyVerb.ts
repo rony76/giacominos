@@ -1,18 +1,16 @@
-import { type Term } from './Conjugation';
+import { termWithRoot, TermBuilder } from './Conjugation';
 import { XxxooxVerb } from './XxxooxVerb';
 import { type Verb } from './Verb';
 
-export function happyRoot(root: string): Term {
+export function happyRoot(root: string): TermBuilder {
   const lastEIndex = root.lastIndexOf('e');
   if (lastEIndex === -1) {
-    return [{ type: 'root', value: root }];
+    throw new Error('Cannot create modified root for happy verb without "e" in root');
   }
 
-  return [
-    { type: 'root', value: root.slice(0, lastEIndex) },
-    { type: 'alternateRoot', value: 'e => ie' },
-    { type: 'root', value: root.slice(lastEIndex + 1) },
-  ];
+  return termWithRoot(root.slice(0, lastEIndex))
+    .addAltRoot('e', 'ie')
+    .addRoot(root.slice(lastEIndex + 1));
 }
 
 export class HappyVerb extends XxxooxVerb {
@@ -24,7 +22,7 @@ export class HappyVerb extends XxxooxVerb {
     return '😊';
   }
 
-  protected createModifiedRoot(): Term {
+  protected createModifiedRoot(): TermBuilder {
     return happyRoot(this.root);
   }
 }

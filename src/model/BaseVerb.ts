@@ -25,13 +25,17 @@ export abstract class BaseVerb implements Verb {
 
   abstract get conjugation(): Conjugation;
 
-  protected getEnding(index: number): Token {
-    const endings = {
+  protected getEndSuffix(index: number): string {
+    const suffixes = {
       ar: ['o', 'as', 'a', 'amos', 'áis', 'an'],
       er: ['o', 'es', 'e', 'emos', 'éis', 'en'],
       ir: ['o', 'es', 'e', 'imos', 'ís', 'en'],
     };
 
-    return { type: 'ending', value: endings[this.conjType as keyof typeof endings][index] };
+    return suffixes[this.conjType as keyof typeof suffixes][index];
+  }
+
+  protected getEnding(index: number): Token {
+    return { type: 'ending', value: this.getEndSuffix(index) };
   }
 }

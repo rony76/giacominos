@@ -1,5 +1,11 @@
 import { BaseVerb } from './BaseVerb';
-import { type Conjugation, type Term } from './Conjugation';
+import {
+  type Conjugation,
+  type Term,
+  TermBuilder,
+  termWithRoot,
+  termWithAltRoot,
+} from './Conjugation';
 import type { Verb } from './Verb.ts';
 import { gFirstTerm } from './FirstTermSpecialVerb.ts';
 import { happyRoot } from './HappyVerb.ts';
@@ -7,13 +13,13 @@ import { soAndSoRoot } from './SoAndSoVerb.ts';
 
 export class YxxooxVerb extends BaseVerb {
   private readonly firstTermBuilder: (root: string) => Term;
-  private readonly modifiedRootBuilder: (root: string) => Term;
+  private readonly modifiedRootBuilder: (root: string) => TermBuilder;
 
   constructor(
     infinitive: string,
     translation: string,
     firstTermBuilder: (root: string) => Term,
-    modifiedRootBuilder: (root: string) => Term
+    modifiedRootBuilder: (root: string) => TermBuilder
   ) {
     super(infinitive, translation);
     this.firstTermBuilder = firstTermBuilder;
@@ -21,19 +27,19 @@ export class YxxooxVerb extends BaseVerb {
   }
 
   get conjugation(): Conjugation {
-    const root: Term = [{ type: 'root', value: this.root }];
+    const root: TermBuilder = termWithRoot(this.root);
 
-    const modifiedRoot = this.modifiedRootBuilder(this.root);
+    const modifiedRoot: TermBuilder = this.modifiedRootBuilder(this.root);
 
     const firstTerm: Term = this.firstTermBuilder(this.root);
 
     return [
       firstTerm,
-      [...modifiedRoot, this.getEnding(1)],
-      [...modifiedRoot, this.getEnding(2)],
-      [...root, this.getEnding(3)],
-      [...root, this.getEnding(4)],
-      [...modifiedRoot, this.getEnding(5)],
+      modifiedRoot.endWith(this.getEndSuffix(1)),
+      modifiedRoot.endWith(this.getEndSuffix(2)),
+      root.endWith(this.getEndSuffix(3)),
+      root.endWith(this.getEndSuffix(4)),
+      modifiedRoot.endWith(this.getEndSuffix(5)),
     ];
   }
 
@@ -42,20 +48,11 @@ export class YxxooxVerb extends BaseVerb {
   }
 }
 
-const digoBuilder = () =>
-  [
-    { type: 'root', value: 'd' },
-    { type: 'alternateRoot', value: 'ec => i' },
-    { type: 'alternateEnding', value: 'go' },
-  ] as Term;
+const digoBuilder = () => termWithRoot('d').addAltRoot('ec', 'i').endWithAlt('go');
 
-const oigoBuilder = () =>
-  [
-    { type: 'alternateRoot', value: 'o => oi' },
-    { type: 'alternateEnding', value: 'go' },
-  ] as Term;
+const oigoBuilder = () => termWithAltRoot('o', 'oi').endWithAlt('go');
 
-const oyBuilder = () => [{ type: 'alternateRoot', value: 'o => oy' }] as Term;
+const oyBuilder = () => termWithAltRoot('o', 'oy');
 
 export const twoIrregularitiesVerbs: Verb[] = [
   new YxxooxVerb('venir', 'venire', gFirstTerm, happyRoot),

@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { RegularVerb } from './RegularVerb';
+import { termWithRoot } from './Conjugation';
 
 describe('RegularVerb', () => {
   describe('AR verbs', () => {
@@ -13,30 +14,12 @@ describe('RegularVerb', () => {
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);
 
-      expect(conjugation[0]).toEqual([
-        { type: 'root', value: 'habl' },
-        { type: 'ending', value: 'o' },
-      ]);
-      expect(conjugation[1]).toEqual([
-        { type: 'root', value: 'habl' },
-        { type: 'ending', value: 'as' },
-      ]);
-      expect(conjugation[2]).toEqual([
-        { type: 'root', value: 'habl' },
-        { type: 'ending', value: 'a' },
-      ]);
-      expect(conjugation[3]).toEqual([
-        { type: 'root', value: 'habl' },
-        { type: 'ending', value: 'amos' },
-      ]);
-      expect(conjugation[4]).toEqual([
-        { type: 'root', value: 'habl' },
-        { type: 'ending', value: 'áis' },
-      ]);
-      expect(conjugation[5]).toEqual([
-        { type: 'root', value: 'habl' },
-        { type: 'ending', value: 'an' },
-      ]);
+      expect(conjugation[0]).toEqual(termWithRoot('habl').endWith('o'));
+      expect(conjugation[1]).toEqual(termWithRoot('habl').endWith('as'));
+      expect(conjugation[2]).toEqual(termWithRoot('habl').endWith('a'));
+      expect(conjugation[3]).toEqual(termWithRoot('habl').endWith('amos'));
+      expect(conjugation[4]).toEqual(termWithRoot('habl').endWith('áis'));
+      expect(conjugation[5]).toEqual(termWithRoot('habl').endWith('an'));
     });
   });
 
@@ -49,30 +32,12 @@ describe('RegularVerb', () => {
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);
 
-      expect(conjugation[0]).toEqual([
-        { type: 'root', value: 'com' },
-        { type: 'ending', value: 'o' },
-      ]);
-      expect(conjugation[1]).toEqual([
-        { type: 'root', value: 'com' },
-        { type: 'ending', value: 'es' },
-      ]);
-      expect(conjugation[2]).toEqual([
-        { type: 'root', value: 'com' },
-        { type: 'ending', value: 'e' },
-      ]);
-      expect(conjugation[3]).toEqual([
-        { type: 'root', value: 'com' },
-        { type: 'ending', value: 'emos' },
-      ]);
-      expect(conjugation[4]).toEqual([
-        { type: 'root', value: 'com' },
-        { type: 'ending', value: 'éis' },
-      ]);
-      expect(conjugation[5]).toEqual([
-        { type: 'root', value: 'com' },
-        { type: 'ending', value: 'en' },
-      ]);
+      expect(conjugation[0]).toEqual(termWithRoot('com').endWith('o'));
+      expect(conjugation[1]).toEqual(termWithRoot('com').endWith('es'));
+      expect(conjugation[2]).toEqual(termWithRoot('com').endWith('e'));
+      expect(conjugation[3]).toEqual(termWithRoot('com').endWith('emos'));
+      expect(conjugation[4]).toEqual(termWithRoot('com').endWith('éis'));
+      expect(conjugation[5]).toEqual(termWithRoot('com').endWith('en'));
     });
   });
 
@@ -85,30 +50,12 @@ describe('RegularVerb', () => {
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);
 
-      expect(conjugation[0]).toEqual([
-        { type: 'root', value: 'viv' },
-        { type: 'ending', value: 'o' },
-      ]);
-      expect(conjugation[1]).toEqual([
-        { type: 'root', value: 'viv' },
-        { type: 'ending', value: 'es' },
-      ]);
-      expect(conjugation[2]).toEqual([
-        { type: 'root', value: 'viv' },
-        { type: 'ending', value: 'e' },
-      ]);
-      expect(conjugation[3]).toEqual([
-        { type: 'root', value: 'viv' },
-        { type: 'ending', value: 'imos' },
-      ]);
-      expect(conjugation[4]).toEqual([
-        { type: 'root', value: 'viv' },
-        { type: 'ending', value: 'ís' },
-      ]);
-      expect(conjugation[5]).toEqual([
-        { type: 'root', value: 'viv' },
-        { type: 'ending', value: 'en' },
-      ]);
+      expect(conjugation[0]).toEqual(termWithRoot('viv').endWith('o'));
+      expect(conjugation[1]).toEqual(termWithRoot('viv').endWith('es'));
+      expect(conjugation[2]).toEqual(termWithRoot('viv').endWith('e'));
+      expect(conjugation[3]).toEqual(termWithRoot('viv').endWith('imos'));
+      expect(conjugation[4]).toEqual(termWithRoot('viv').endWith('ís'));
+      expect(conjugation[5]).toEqual(termWithRoot('viv').endWith('en'));
     });
   });
 });
