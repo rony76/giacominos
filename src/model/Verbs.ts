@@ -16,5 +16,5 @@ export const allVerbs: Verb[] = [
   ...yVerbs,
   ...firstTermSpecialVerbs,
   ...twoIrregularitiesVerbs,
-  ...fullyIrregularVerbs
+  ...fullyIrregularVerbs,
 ].sort((a, b) => a.infinitive.localeCompare(b.infinitive));
