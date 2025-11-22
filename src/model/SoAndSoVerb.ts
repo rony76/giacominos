@@ -1,6 +1,6 @@
-import { TermBuilder, termWithRoot } from './Conjugation';
 import { XxxooxVerb } from './XxxooxVerb';
 import { type Verb } from './Verb';
+import { TermBuilder, termWithRoot } from './TermBuilder.ts';
 
 const soAndSoEmoji = '😐';
 

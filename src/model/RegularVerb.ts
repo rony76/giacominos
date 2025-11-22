@@ -1,6 +1,7 @@
 import { type Verb } from './Verb';
-import { type Conjugation, termWithRoot } from './Conjugation';
+import { type Conjugation } from './Conjugation';
 import { BaseVerb } from './BaseVerb';
+import { termWithRoot } from './TermBuilder.ts';
 
 export class RegularVerb extends BaseVerb {
   constructor(infinitive: string, translation: string) {

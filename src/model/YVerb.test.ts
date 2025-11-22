@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { YVerb } from './YVerb';
-import { termWithRoot } from './Conjugation.ts';
+
+import { termWithRoot } from './TermBuilder.ts';
 
 describe('YVerb', () => {
   it('conjugates regularly for nosotros and vosotros', () => {

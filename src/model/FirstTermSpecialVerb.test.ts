@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { FirstTermSpecialVerb } from './FirstTermSpecialVerb';
-import { termWithRoot } from './Conjugation';
+
+import { termWithRoot } from './TermBuilder.ts';
 
 describe('FirstTermSpecialVerb', () => {
   it('conjugates regularly for other persons', () => {

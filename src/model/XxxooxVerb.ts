@@ -1,5 +1,6 @@
 import { BaseVerb } from './BaseVerb';
-import { type Conjugation, TermBuilder, termWithRoot } from './Conjugation';
+import { type Conjugation } from './Conjugation';
+import { TermBuilder, termWithRoot } from './TermBuilder.ts';
 
 export abstract class XxxooxVerb extends BaseVerb {
   get conjugation(): Conjugation {

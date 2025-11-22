@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { twoIrregularitiesVerbs } from './TwoIrregularitiesVerb.ts';
 import type { Verb } from './Verb.ts';
-import { termWithRoot, termWithAltRoot } from './Conjugation.ts';
+import { termWithAltRoot, termWithRoot } from './TermBuilder.ts';
 
 describe('Two irregularities verb', () => {
   function findVerb(inf: string): Verb {

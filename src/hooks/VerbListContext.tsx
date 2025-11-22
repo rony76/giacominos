@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from 'react';
+import { createContext, type ReactNode, useContext, useState } from 'react';
 import { removeTilde, type Verb } from '../model/Verb';
 import { allVerbs } from '../model/Verbs';
 

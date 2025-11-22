@@ -1,6 +1,6 @@
-import { termWithRoot, TermBuilder } from './Conjugation';
 import { XxxooxVerb } from './XxxooxVerb';
 import { type Verb } from './Verb';
+import { TermBuilder, termWithRoot } from './TermBuilder.ts';
 
 export class SadVerb extends XxxooxVerb {
   constructor(infinitive: string, translation: string) {

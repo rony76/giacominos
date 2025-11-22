@@ -1,7 +1,7 @@
 import { type Conjugation, type Term } from './Conjugation';
 import { BaseVerb } from './BaseVerb';
 import { type Verb } from './Verb';
-import { termWithRoot, termWithAltRoot } from './Conjugation.ts';
+import { termWithAltRoot, termWithRoot } from './TermBuilder.ts';
 
 export class FirstTermSpecialVerb extends BaseVerb {
   private readonly firstTerm: Term;

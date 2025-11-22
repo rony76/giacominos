@@ -1,6 +1,6 @@
-import { termWithRoot, TermBuilder } from './Conjugation';
 import { XxxooxVerb } from './XxxooxVerb';
 import { type Verb } from './Verb';
+import { TermBuilder, termWithRoot } from './TermBuilder.ts';
 
 export function happyRoot(root: string): TermBuilder {
   const lastEIndex = root.lastIndexOf('e');

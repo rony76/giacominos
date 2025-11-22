@@ -1,15 +1,10 @@
 import { BaseVerb } from './BaseVerb';
-import {
-  type Conjugation,
-  type Term,
-  TermBuilder,
-  termWithRoot,
-  termWithAltRoot,
-} from './Conjugation';
+import { type Conjugation, type Term } from './Conjugation';
 import type { Verb } from './Verb.ts';
 import { gFirstTerm } from './FirstTermSpecialVerb.ts';
 import { happyRoot } from './HappyVerb.ts';
 import { soAndSoRoot } from './SoAndSoVerb.ts';
+import { TermBuilder, termWithAltRoot, termWithRoot } from './TermBuilder.ts';
 
 export class YxxooxVerb extends BaseVerb {
   private readonly firstTermBuilder: (root: string) => Term;
