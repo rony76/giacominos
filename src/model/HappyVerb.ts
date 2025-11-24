@@ -28,12 +28,15 @@ export class HappyVerb extends XxxooxVerb {
 }
 
 export const happyVerbs: Verb[] = [
-  ['temblar', 'tremare'],
-  ['querer', 'desiderare'],
-  ['perder', 'perdere'],
   ['arrepentirse', 'pentirsi'],
-  ['sentir', 'sentire'],
-  ['mentir', 'mentire'],
-  ['preferir', 'preferire'],
   ['cerrar', 'chiudere'],
+  ['cominzar', 'cominciare'],
+  ['divertirse', 'divertirsi'],
+  ['encender', 'accendere'],
+  ['mentir', 'mentire'],
+  ['perder', 'perdere'],
+  ['preferir', 'preferire'],
+  ['querer', 'desiderare'],
+  ['sentir', 'sentire'],
+  ['temblar', 'tremare'],
 ].map(([infinitive, translation]) => new HappyVerb(infinitive, translation));

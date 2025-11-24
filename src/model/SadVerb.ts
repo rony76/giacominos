@@ -30,5 +30,6 @@ export const sadVerbs: Verb[] = [
   ['jugar', 'giocare'],
   ['morir', 'morire'],
   ['sonar', 'suonare'],
+  ['volar', 'volare'],
   ['volver', 'tornare'],
 ].map(([infinitive, translation]) => new SadVerb(infinitive, translation));
