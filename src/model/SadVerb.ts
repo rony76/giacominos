@@ -27,9 +27,12 @@ export class SadVerb extends XxxooxVerb {
 }
 
 export const sadVerbs: Verb[] = [
+  ['encontrar', 'incontrare'],
   ['jugar', 'giocare'],
   ['morir', 'morire'],
+  ['poder', 'potere'],
   ['sonar', 'suonare'],
+  ['soñar', 'sognare'],
   ['volar', 'volare'],
   ['volver', 'tornare'],
 ].map(([infinitive, translation]) => new SadVerb(infinitive, translation));

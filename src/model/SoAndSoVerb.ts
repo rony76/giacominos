@@ -60,6 +60,7 @@ const seguir: Verb = {
 };
 
 const standardVerbs = [
+  ['despedir', 'congedarsi'],
   ['pedir', 'chiedere'],
   ['reir', 'ridere'],
   ['repetir', 'ripetere'],

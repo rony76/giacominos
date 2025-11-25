@@ -5,7 +5,9 @@ import { TermBuilder, termWithRoot } from './TermBuilder.ts';
 export function happyRoot(root: string): TermBuilder {
   const lastEIndex = root.lastIndexOf('e');
   if (lastEIndex === -1) {
-    throw new Error('Cannot create modified root for happy verb without "e" in root');
+    throw new Error(
+      'Cannot create modified root for happy verb "' + root + '" without "e" in root'
+    );
   }
 
   return termWithRoot(root.slice(0, lastEIndex))
@@ -30,10 +32,11 @@ export class HappyVerb extends XxxooxVerb {
 export const happyVerbs: Verb[] = [
   ['arrepentirse', 'pentirsi'],
   ['cerrar', 'chiudere'],
-  ['cominzar', 'cominciare'],
+  ['comenzar', 'cominciare'],
   ['divertirse', 'divertirsi'],
   ['encender', 'accendere'],
   ['mentir', 'mentire'],
+  ['pensar', 'pensare'],
   ['perder', 'perdere'],
   ['preferir', 'preferire'],
   ['querer', 'desiderare'],
