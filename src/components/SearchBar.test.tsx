@@ -32,10 +32,8 @@ describe('SearchBar', () => {
     render(<SearchBar onSearch={onSearch} />);
 
     const input = screen.getByPlaceholderText('Cerca...');
-    const button = screen.getByRole('button', { name: 'Cerca' });
 
-    await user.type(input, 'test query');
-    await user.click(button);
+    await user.type(input, 'test query{enter}');
 
     expect(onSearch).toHaveBeenCalledWith('test query');
     expect(onSearch).toHaveBeenCalledTimes(1);
@@ -58,10 +56,8 @@ describe('SearchBar', () => {
     render(<SearchBar />);
 
     const input = screen.getByPlaceholderText('Cerca...') as HTMLInputElement;
-    const button = screen.getByRole('button', { name: 'Cerca' });
 
-    await user.type(input, 'test query');
-    await user.click(button);
+    await user.type(input, 'test query{enter}');
 
     expect(input.value).toBe('test query');
   });
