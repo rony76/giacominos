@@ -22,7 +22,7 @@ export default function SearchBar({ onSearch, placeholder = 'Cerca...' }: Search
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center my-4">
         <div className="col-md-6">
           <div className="search-container">
             <input
