@@ -1,8 +1,6 @@
 import { XxxooxVerb } from './XxxooxVerb';
-import { type Verb } from './Verb';
+import { type Verb, type VerbType } from './Verb';
 import { TermBuilder, termWithRoot } from './TermBuilder.ts';
-
-const soAndSoEmoji = '😐';
 
 export function soAndSoRoot(root: string): TermBuilder {
   const lastEIndex = root.lastIndexOf('e');
@@ -20,8 +18,8 @@ export class SoAndSoVerb extends XxxooxVerb {
     super(infinitive, translation);
   }
 
-  get emoji(): string {
-    return soAndSoEmoji;
+  get verbType(): VerbType {
+    return 'so-and-so';
   }
 
   protected createModifiedRoot(): TermBuilder {
@@ -33,7 +31,7 @@ const elegir: Verb = {
   infinitive: 'elegir',
   translation: 'scegliere',
   isReflexive: false,
-  emoji: soAndSoEmoji,
+  verbType: 'so-and-so',
   conjugation: [
     termWithRoot('el').addAltRoot('eg', 'ij').endWith('o'),
     termWithRoot('el').addAltRoot('e', 'i').addRoot('g').endWith('es'),
@@ -47,7 +45,7 @@ const elegir: Verb = {
 const seguir: Verb = {
   infinitive: 'seguir',
   translation: 'seguire',
-  emoji: soAndSoEmoji,
+  verbType: 'so-and-so',
   isReflexive: false,
   conjugation: [
     termWithRoot('s').addAltRoot('egu', 'ig').endWith('o'),

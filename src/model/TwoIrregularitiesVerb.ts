@@ -1,6 +1,6 @@
 import { BaseVerb } from './BaseVerb';
 import { type Conjugation, type Term } from './Conjugation';
-import type { Verb } from './Verb.ts';
+import type { Verb, VerbType } from './Verb.ts';
 import { gFirstTerm } from './FirstTermSpecialVerb.ts';
 import { happyRoot } from './HappyVerb.ts';
 import { soAndSoRoot } from './SoAndSoVerb.ts';
@@ -21,6 +21,10 @@ export class YxxooxVerb extends BaseVerb {
     this.modifiedRootBuilder = modifiedRootBuilder;
   }
 
+  get verbType(): VerbType {
+    return 'two-specials';
+  }
+
   get conjugation(): Conjugation {
     const root: TermBuilder = termWithRoot(this.root);
 
@@ -36,10 +40,6 @@ export class YxxooxVerb extends BaseVerb {
       root.endWith(this.getEndSuffix(4)),
       modifiedRoot.endWith(this.getEndSuffix(5)),
     ];
-  }
-
-  get emoji(): string {
-    return '2️⃣';
   }
 }
 

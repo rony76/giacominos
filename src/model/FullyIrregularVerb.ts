@@ -1,9 +1,8 @@
 import type { Verb } from './Verb.ts';
 import { fullIrregularTerm, termWithRoot } from './TermBuilder.ts';
 
-const emoji = '🤪';
 const ser: Verb = {
-  emoji: emoji,
+  verbType: 'irregular',
   infinitive: 'ser',
   translation: 'essere',
   isReflexive: false,
@@ -17,7 +16,7 @@ const ser: Verb = {
   ],
 };
 const ir: Verb = {
-  emoji: emoji,
+  verbType: 'irregular',
   infinitive: 'ir',
   translation: 'andare',
   isReflexive: false,

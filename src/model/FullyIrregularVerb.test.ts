@@ -14,7 +14,7 @@ describe('Fully irregular verb', () => {
   it('conjugates regularly SER', () => {
     const verb = findVerb('ser');
 
-    expect(verb.emoji).toBe('🤪');
+    expect(verb.verbType).toBe('irregular');
 
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);
@@ -30,7 +30,7 @@ describe('Fully irregular verb', () => {
   it('conjugates regularly IR', () => {
     const verb = findVerb('ir');
 
-    expect(verb.emoji).toBe('🤪');
+    expect(verb.verbType).toBe('irregular');
 
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);

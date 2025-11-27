@@ -1,5 +1,5 @@
 import { XxxooxVerb } from './XxxooxVerb';
-import { type Verb } from './Verb';
+import { type Verb, type VerbType } from './Verb';
 import { TermBuilder, termWithRoot } from './TermBuilder.ts';
 
 export function yRoot(root: string): TermBuilder {
@@ -11,8 +11,8 @@ export class YVerb extends XxxooxVerb {
     super(infinitive, translation);
   }
 
-  get emoji(): string {
-    return 'Ⓨ';
+  get verbType(): VerbType {
+    return 'y';
   }
 
   protected createModifiedRoot(): TermBuilder {

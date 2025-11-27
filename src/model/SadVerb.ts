@@ -1,5 +1,5 @@
 import { XxxooxVerb } from './XxxooxVerb';
-import { type Verb } from './Verb';
+import { type Verb, type VerbType } from './Verb';
 import { TermBuilder, termWithRoot } from './TermBuilder.ts';
 
 export class SadVerb extends XxxooxVerb {
@@ -7,8 +7,8 @@ export class SadVerb extends XxxooxVerb {
     super(infinitive, translation);
   }
 
-  get emoji(): string {
-    return '😢';
+  get verbType(): VerbType {
+    return 'sad';
   }
 
   protected createModifiedRoot(): TermBuilder {

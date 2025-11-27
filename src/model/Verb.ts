@@ -1,7 +1,17 @@
 import { type Conjugation } from './Conjugation';
 
+export type VerbType =
+  | 'regular'
+  | 'happy'
+  | 'sad'
+  | 'so-and-so'
+  | 'one-special'
+  | 'two-specials'
+  | 'y'
+  | 'irregular';
+
 export interface Verb {
-  emoji: string;
+  verbType: VerbType;
   infinitive: string;
   translation: string;
   isReflexive: boolean;

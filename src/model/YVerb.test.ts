@@ -7,7 +7,7 @@ describe('YVerb', () => {
   it('conjugates regularly for nosotros and vosotros', () => {
     const verb = new YVerb('construir', 'costruire');
 
-    expect(verb.emoji).toBe('Ⓨ');
+    expect(verb.verbType).toBe('y');
 
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);
@@ -20,7 +20,7 @@ describe('YVerb', () => {
     it('conjugates construir correctly (turning I into Y)', () => {
       const verb = new YVerb('construir', 'costruire');
 
-      expect(verb.emoji).toBe('Ⓨ');
+      expect(verb.verbType).toBe('y');
 
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);

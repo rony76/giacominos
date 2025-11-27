@@ -7,7 +7,7 @@ describe('SoAndSoVerb', () => {
   it('conjugates regularly for nosotros and vosotros', () => {
     const verb = new SoAndSoVerb('pedir', 'chiedere');
 
-    expect(verb.emoji).toBe('😐');
+    expect(verb.verbType).toBe('so-and-so');
 
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);
@@ -20,7 +20,7 @@ describe('SoAndSoVerb', () => {
     it('conjugates pedir correctly', () => {
       const verb = new SoAndSoVerb('pedir', 'chiedere');
 
-      expect(verb.emoji).toBe('😐');
+      expect(verb.verbType).toBe('so-and-so');
 
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);

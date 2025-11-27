@@ -11,7 +11,7 @@ describe('FirstTermSpecialVerb', () => {
       termWithRoot('est').endWithAlt('oy')
     );
 
-    expect(verb.emoji).toBe('1️⃣');
+    expect(verb.verbType).toBe('one-special');
 
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);

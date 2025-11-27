@@ -7,7 +7,7 @@ describe('HappyVerb', () => {
   it('conjugates regularly for nosotros and vosotros', () => {
     const verb = new HappyVerb('temblar', 'tremare');
 
-    expect(verb.emoji).toBe('😊');
+    expect(verb.verbType).toBe('happy');
 
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);
@@ -20,7 +20,7 @@ describe('HappyVerb', () => {
     it('conjugates temblar correctly', () => {
       const verb = new HappyVerb('temblar', 'tremare');
 
-      expect(verb.emoji).toBe('😊');
+      expect(verb.verbType).toBe('happy');
 
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);
@@ -46,7 +46,7 @@ describe('HappyVerb', () => {
 
       expect(verb.infinitive).toBe('sentir');
       expect(verb.translation).toBe('sentire');
-      expect(verb.emoji).toBe('😊');
+      expect(verb.verbType).toBe('happy');
 
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);
@@ -68,7 +68,8 @@ describe('HappyVerb', () => {
     it('conjugates arrepentirse correctly', () => {
       const verb = new HappyVerb('arrepentirse', 'pentirsi');
 
-      expect(verb.emoji).toBe('😊');
+      expect(verb.verbType).toBe('happy');
+
       expect(verb.isReflexive).toBe(true);
 
       const conjugation = verb.conjugation;

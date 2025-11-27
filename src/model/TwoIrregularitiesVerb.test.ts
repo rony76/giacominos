@@ -14,7 +14,7 @@ describe('Two irregularities verb', () => {
   it('conjugates regularly for nosotros and vosotros', () => {
     const verb = findVerb('tener');
 
-    expect(verb.emoji).toBe('2️⃣');
+    expect(verb.verbType).toBe('two-specials');
 
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);

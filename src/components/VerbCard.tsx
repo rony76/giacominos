@@ -1,4 +1,4 @@
-import { type Verb } from '../model/Verb.ts';
+import { type Verb, type VerbType } from '../model/Verb.ts';
 import { type Term } from '../model/Conjugation';
 import './VerbCard.css';
 import { useState } from 'react';
@@ -36,6 +36,17 @@ function printTerm(t: Term, verbKey: string, animated: boolean, setAnimated: (v:
   );
 }
 
+const typeToEmoji: Map<VerbType, string> = new Map([
+  ['regular', '✅'],
+  ['happy', '😊'],
+  ['sad', '😢'],
+  ['so-and-so', '😐'],
+  ['one-special', '1️⃣'],
+  ['two-specials', '2️⃣'],
+  ['y', 'ⓨ'],
+  ['irregular', '🤯'],
+]);
+
 export default function VerbCard({ verb }: VerbCardProps) {
   const [animated, setAnimated] = useState<boolean>(false);
   const conjugation = verb.conjugation;
@@ -45,7 +56,7 @@ export default function VerbCard({ verb }: VerbCardProps) {
       <div className="card h-100">
         <div className="card-body">
           <h5 className="card-title">{verb.infinitive}</h5>
-          <h6 className="card-subtitle">{verb.emoji}</h6>
+          <h6 className="card-subtitle">{typeToEmoji.get(verb.verbType)}</h6>
           <p className="card-text">{verb.translation}</p>
 
           <div className="card-text">

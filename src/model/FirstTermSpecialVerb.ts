@@ -1,18 +1,17 @@
 import { type Conjugation, type Term } from './Conjugation';
 import { BaseVerb } from './BaseVerb';
-import { type Verb } from './Verb';
+import { type Verb, type VerbType } from './Verb';
 import { fullIrregularTerm, termWithAltRoot, termWithRoot } from './TermBuilder.ts';
 
 export class FirstTermSpecialVerb extends BaseVerb {
   private readonly firstTerm: Term;
-
   constructor(infinitive: string, translation: string, firstTerm: Term) {
     super(infinitive, translation);
     this.firstTerm = firstTerm;
   }
 
-  get emoji(): string {
-    return '1️⃣';
+  get verbType(): VerbType {
+    return 'one-special';
   }
 
   get conjugation(): Conjugation {

@@ -1,4 +1,4 @@
-import { removeTilde, type Verb } from './Verb';
+import { removeTilde, type Verb, type VerbType } from './Verb';
 import { type Conjugation, type Token } from './Conjugation';
 
 export abstract class BaseVerb implements Verb {
@@ -21,7 +21,7 @@ export abstract class BaseVerb implements Verb {
     this.root = infinitive.slice(0, -2);
   }
 
-  abstract get emoji(): string;
+  abstract get verbType(): VerbType;
 
   abstract get conjugation(): Conjugation;
 

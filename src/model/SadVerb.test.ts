@@ -7,7 +7,7 @@ describe('SadVerb', () => {
   it('conjugates regularly for nosotros and vosotros', () => {
     const verb = new SadVerb('jugar', 'giocare');
 
-    expect(verb.emoji).toBe('😢');
+    expect(verb.verbType).toBe('sad');
 
     const conjugation = verb.conjugation;
     expect(conjugation).toHaveLength(6);
@@ -20,7 +20,7 @@ describe('SadVerb', () => {
     it('conjugates jugar correctly (turning U into UE)', () => {
       const verb = new SadVerb('jugar', 'giocare');
 
-      expect(verb.emoji).toBe('😢');
+      expect(verb.verbType).toBe('sad');
 
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);
@@ -42,7 +42,7 @@ describe('SadVerb', () => {
     it('conjugates sonar correctly (turning O into UE)', () => {
       const verb = new SadVerb('sonar', 'suonare');
 
-      expect(verb.emoji).toBe('😢');
+      expect(verb.verbType).toBe('sad');
 
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);

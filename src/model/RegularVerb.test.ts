@@ -10,7 +10,7 @@ describe('RegularVerb', () => {
 
       expect(verb.infinitive).toBe('hablar');
       expect(verb.translation).toBe('to speak');
-      expect(verb.emoji).toBe('✅');
+      expect(verb.verbType).toBe('regular');
 
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);
@@ -28,7 +28,7 @@ describe('RegularVerb', () => {
     it('conjugates comer correctly', () => {
       const verb = new RegularVerb('comer', 'to eat');
 
-      expect(verb.emoji).toBe('✅');
+      expect(verb.verbType).toBe('regular');
 
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);
@@ -46,7 +46,7 @@ describe('RegularVerb', () => {
     it('conjugates vivir correctly', () => {
       const verb = new RegularVerb('vivir', 'to live');
 
-      expect(verb.emoji).toBe('✅');
+      expect(verb.verbType).toBe('regular');
 
       const conjugation = verb.conjugation;
       expect(conjugation).toHaveLength(6);

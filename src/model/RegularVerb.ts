@@ -1,4 +1,4 @@
-import { type Verb } from './Verb';
+import { type Verb, type VerbType } from './Verb';
 import { type Conjugation } from './Conjugation';
 import { BaseVerb } from './BaseVerb';
 import { termWithRoot } from './TermBuilder.ts';
@@ -8,8 +8,8 @@ export class RegularVerb extends BaseVerb {
     super(infinitive, translation);
   }
 
-  get emoji(): string {
-    return '✅';
+  get verbType(): VerbType {
+    return 'regular';
   }
 
   get conjugation(): Conjugation {
