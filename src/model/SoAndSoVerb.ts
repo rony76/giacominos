@@ -58,8 +58,11 @@ const seguir: Verb = {
 };
 
 const standardVerbs = [
+  ['despedir', 'congedarsi'],
   ['pedir', 'chiedere'],
   ['reir', 'ridere'],
+  ['repetir', 'ripetere'],
+  ['servir', 'servire'],
 ].map(([infinitive, translation]) => new SoAndSoVerb(infinitive, translation));
 
 export const soAndSoVerbs: Verb[] = [...standardVerbs, elegir, seguir];

@@ -1,4 +1,5 @@
 import { type ChangeEvent, type FormEvent, useState } from 'react';
+import './SearchBar.css';
 
 interface SearchBarProps {
   onSearch?: (query: string) => void;
@@ -21,10 +22,20 @@ export default function SearchBar({ onSearch, placeholder = 'Cerca...' }: Search
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={query} onChange={handleChange} placeholder={placeholder} />
-      <button type="submit" name="search">
-        Cerca
-      </button>
+      <div className="row justify-content-center my-4">
+        <div className="col-md-6">
+          <div className="search-container">
+            <input
+              type="text"
+              className="form-control search-input"
+              placeholder={placeholder}
+              value={query}
+              onChange={handleChange}
+            />
+            <i className="fas fa-search search-icon"></i>
+          </div>
+        </div>
+      </div>
     </form>
   );
 }

@@ -52,7 +52,7 @@ function gVerb(infinitive: string, translation: string): Verb {
 
 function igVerb(infinitive: string, translation: string): Verb {
   const subRoot = infinitive.slice(0, -2);
-  const firstTerm = termWithRoot(subRoot).endWithAlt('go');
+  const firstTerm = termWithRoot(subRoot).endWithAlt('igo');
   return new FirstTermSpecialVerb(infinitive, translation, firstTerm);
 }
 
@@ -66,18 +66,23 @@ function firstSpecialVerb(
 }
 
 export const firstTermSpecialVerbs: Verb[] = [
-  oyVerb('estar', 'essere/stare'),
-  oyVerb('dar', 'dare'),
   cerCirVerb('crecer', 'crescere'),
+  new FirstTermSpecialVerb('caber', 'fittare', termWithAltRoot('cab', 'quep').endWith('o')),
+  new FirstTermSpecialVerb(
+    'coger',
+    'prendere',
+    termWithRoot('co').addAltRoot('g', 'j').endWith('o')
+  ),
+  new FirstTermSpecialVerb('hacer', 'fare', termWithRoot('ha').addAltRoot('c', 'g').endWith('o')),
+  igVerb('caer', 'cadere'),
+  oyVerb('dar', 'dare'),
+  oyVerb('estar', 'essere/stare'),
   cerCirVerb('nacer', 'nascere'),
   cerCirVerb('parecer', 'sembrare'),
-  gVerb('salir', 'uscire'),
   gVerb('poner', 'mettere'),
-  gVerb('valer', 'valere'),
-  igVerb('traer', 'prendere'),
-  igVerb('caer', 'cadere'),
-  new FirstTermSpecialVerb('ver', 'vedere', termWithAltRoot('v', 've').endWith('o')),
   firstSpecialVerb('saber', 'sapere', 'sé'),
-  new FirstTermSpecialVerb('caber', 'fittare', termWithAltRoot('cab', 'quep').endWith('o')),
-  new FirstTermSpecialVerb('hacer', 'fare', termWithRoot('ha').addAltRoot('c', 'g').endWith('o')),
+  gVerb('salir', 'uscire'),
+  igVerb('traer', 'prendere'),
+  gVerb('valer', 'valere'),
+  new FirstTermSpecialVerb('ver', 'vedere', termWithAltRoot('v', 've').endWith('o')),
 ];
