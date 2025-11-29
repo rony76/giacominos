@@ -57,12 +57,26 @@ const seguir: Verb = {
   ],
 };
 
+const reir: Verb = {
+  infinitive: 'reír',
+  translation: 'ridere',
+  verbType: 'so-and-so',
+  isReflexive: false,
+  conjugation: [
+    termWithRoot('r').addAltRoot('e', 'í').endWith('o'),
+    termWithRoot('r').addAltRoot('e', 'í').endWith('es'),
+    termWithRoot('r').addAltRoot('e', 'í').endWith('e'),
+    termWithRoot('re').endWithAlt('ímos'),
+    termWithRoot('re').endWith('ís'),
+    termWithRoot('r').addAltRoot('e', 'í').endWith('en'),
+  ],
+};
+
 const standardVerbs = [
   ['despedir', 'congedarsi'],
   ['pedir', 'chiedere'],
-  ['reir', 'ridere'],
   ['repetir', 'ripetere'],
   ['servir', 'servire'],
 ].map(([infinitive, translation]) => new SoAndSoVerb(infinitive, translation));
 
-export const soAndSoVerbs: Verb[] = [...standardVerbs, elegir, seguir];
+export const soAndSoVerbs: Verb[] = [...standardVerbs, elegir, reir, seguir];
