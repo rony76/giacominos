@@ -1,9 +1,9 @@
 import { createContext, type ReactNode, useContext, useState } from 'react';
-import { removeTilde, type Verb } from '../model/Verb';
+import { removeTilde, type Verb, type VerbType } from '../model/Verb';
 import { allVerbs } from '../model/Verbs';
 
 interface VerbListContextType {
-  verbs: Verb[];
+  verbMap: Map<VerbType, Verb[]>;
   filterVerbs: (query: string) => void;
 }
 
@@ -29,13 +29,21 @@ export function VerbListContextProvider({ children }: { children: ReactNode }) {
     );
   };
 
+  const verbMap = verbs.reduce((m: Map<VerbType, Verb[]>, v) => {
+    if (!m.has(v.verbType)) {
+      m.set(v.verbType, []);
+    }
+    m.get(v.verbType)?.push(v);
+    return m;
+  }, new Map<VerbType, Verb[]>());
+
   return (
-    <VerbListContext.Provider value={{ verbs, filterVerbs }}>{children}</VerbListContext.Provider>
+    <VerbListContext.Provider value={{ verbMap, filterVerbs }}>{children}</VerbListContext.Provider>
   );
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-export function useVerbList() {
+export function useVerbs() {
   const context = useContext(VerbListContext);
   if (context === undefined) {
     throw new Error('useVerbList must be used within a VerbListProvider');

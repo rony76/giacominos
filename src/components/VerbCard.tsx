@@ -1,10 +1,11 @@
-import { type Verb, type VerbType } from '../model/Verb.ts';
+import { type Verb } from '../model/Verb.ts';
 import { type Term } from '../model/Conjugation';
 import './VerbCard.css';
 import { useState } from 'react';
 
 interface VerbCardProps {
   verb: Verb;
+  fixedExpanded: boolean;
 }
 
 const subjects = ['yo', 'tú', 'él/ella/Ud.', 'nosotros', 'vosotros', 'ellos/ellas/Uds.'];
@@ -36,46 +37,52 @@ function printTerm(t: Term, verbKey: string, animated: boolean, setAnimated: (v:
   );
 }
 
-const typeToEmoji: Map<VerbType, string> = new Map([
-  ['regular', '✅'],
-  ['happy', '😊'],
-  ['sad', '😢'],
-  ['so-and-so', '😐'],
-  ['one-special', '1️⃣'],
-  ['two-specials', '2️⃣'],
-  ['y', 'ⓨ'],
-  ['irregular', '🤯'],
-]);
-
-export default function VerbCard({ verb }: VerbCardProps) {
+export default function VerbCard({ verb, fixedExpanded }: VerbCardProps) {
   const [animated, setAnimated] = useState<boolean>(false);
+  const [expanded, setExpanded] = useState<boolean>(fixedExpanded);
   const conjugation = verb.conjugation;
 
+  if (fixedExpanded && !expanded) {
+    setExpanded(fixedExpanded);
+  }
+
+  function toggleExpanded() {
+    console.log('Toggling expanded for', verb.infinitive, fixedExpanded);
+    if (fixedExpanded) return;
+    setExpanded((e) => !e);
+  }
+
+  let animationClass = '';
+  if (!fixedExpanded) {
+    animationClass = expanded ? ' expanding' : ' collapsing';
+  }
+
   return (
-    <div className="col-md-4 verb-card">
-      <div className="card h-100">
-        <div className="card-body">
+    <div className="verb-card">
+      <div className={'card h-100 px-0' + animationClass}>
+        <div className="card-body" onClick={toggleExpanded}>
           <h5 className="card-title">{verb.infinitive}</h5>
-          <h6 className="card-subtitle">{typeToEmoji.get(verb.verbType)}</h6>
           <p className="card-text">{verb.translation}</p>
 
-          <div className="card-text">
-            <table className="conjugation-table">
-              <tbody>
-                {conjugation.map((c, index) => (
-                  <tr key={index}>
-                    <td>
-                      <small className="text-muted">
-                        {subjects[index]}
-                        {verb.isReflexive && ' ' + reflexiveSubjects[index]}
-                      </small>
-                    </td>
-                    <td>{printTerm(c, verb.infinitive, animated, setAnimated)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {expanded && (
+            <div className="card-text">
+              <table className="conjugation-table">
+                <tbody>
+                  {conjugation.map((c, index) => (
+                    <tr key={index}>
+                      <td>
+                        <small className="text-muted">
+                          {subjects[index]}
+                          {verb.isReflexive && ' ' + reflexiveSubjects[index]}
+                        </small>
+                      </td>
+                      <td>{printTerm(c, verb.infinitive, animated, setAnimated)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </div>
     </div>

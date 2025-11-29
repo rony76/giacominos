@@ -1,14 +1,16 @@
 import { type Conjugation } from './Conjugation';
 
-export type VerbType =
-  | 'regular'
-  | 'happy'
-  | 'sad'
-  | 'so-and-so'
-  | 'one-special'
-  | 'two-specials'
-  | 'y'
-  | 'irregular';
+export const verbTypes = [
+  'happy',
+  'sad',
+  'so-and-so',
+  'y',
+  'one-special',
+  'two-specials',
+  'irregular',
+  'regular',
+] as const;
+export type VerbType = (typeof verbTypes)[number];
 
 export interface Verb {
   verbType: VerbType;

@@ -1,8 +1,8 @@
-import { useVerbList } from '../hooks/VerbListContext';
+import { useVerbs } from '../hooks/VerbListContext';
 import SearchBar from './SearchBar';
 
 export default function SearchBarWrapper() {
-  const { filterVerbs } = useVerbList();
+  const { filterVerbs } = useVerbs();
 
   const loggingFilter = (query: string) => {
     console.log('Filtering verbs with query:', query);

@@ -23,7 +23,7 @@ export const regularVerbs: Verb[] = [
   ['abrazar', 'abbracciare'],
   ['apagar', 'spegnere'],
   ['ayudar', 'aiutare'],
-  ['bezar', 'baciare'],
+  ['besar', 'baciare'],
   ['borrar', 'cancellare'],
   ['buscar', 'cercare'],
   ['cambiar', 'cambiare'],

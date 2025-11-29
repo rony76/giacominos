@@ -20,6 +20,7 @@ export class YVerb extends XxxooxVerb {
   }
 }
 
-export const yVerbs: Verb[] = [['construir', 'costruire']].map(
-  ([infinitive, translation]) => new YVerb(infinitive, translation)
-);
+export const yVerbs: Verb[] = [
+  ['construir', 'costruire'],
+  ['incluir', 'includere'],
+].map(([infinitive, translation]) => new YVerb(infinitive, translation));

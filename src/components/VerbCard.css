@@ -65,6 +65,33 @@
   animation: slideIn 2s ease-in-out;
 }
 
+.expanding {
+  -moz-animation: collapsing 1s ease reverse;
+  -webkit-animation: collapsing 1s ease reverse;
+  -o-animation: collapsing 1s ease reverse;
+  animation: collapsing 1s ease reverse;
+  animation-fill-mode: forwards;
+}
+
+.collapsing {
+  -moz-animation: collapsing 1s ease;
+  -webkit-animation: collapsing 1s ease;
+  -o-animation: collapsing 1s ease;
+  animation: collapsing 1s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes collapsing {
+  from {
+    padding-bottom: 2em;
+    padding-top: 2em;
+  }
+  to {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+}
+
 @keyframes slideIn {
   from {
     opacity: 0.2;
