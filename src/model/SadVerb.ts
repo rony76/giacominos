@@ -27,10 +27,14 @@ export class SadVerb extends XxxooxVerb {
 }
 
 export const sadVerbs: Verb[] = [
+  ['acostarse', 'coricarsi'],
+  ['almorzar', 'pranzare'],
+  ['dormir', 'dormire'],
   ['encontrar', 'incontrare'],
   ['jugar', 'giocare'],
   ['morir', 'morire'],
   ['poder', 'potere'],
+  ['soler', 'esser solito'],
   ['sonar', 'suonare'],
   ['soñar', 'sognare'],
   ['volar', 'volare'],
