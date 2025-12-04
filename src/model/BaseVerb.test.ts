@@ -11,9 +11,7 @@ class TestBaseVerb extends BaseVerb {
   }
 
   get conjugation(): Conjugation {
-    return [0, 1, 2, 3, 4, 5].map((i) =>
-      termWithRoot(this.root).endWith(this.getEndSuffix(i))
-    );
+    return [0, 1, 2, 3, 4, 5].map((i) => termWithRoot(this.root).endWith(this.getEndSuffix(i)));
   }
 }
 
@@ -124,4 +122,3 @@ describe('BaseVerb', () => {
     });
   });
 });
-

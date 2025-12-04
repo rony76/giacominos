@@ -1,10 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import {
-  TermBuilder,
-  termWithRoot,
-  termWithAltRoot,
-  fullIrregularTerm,
-} from './TermBuilder';
+import { TermBuilder, termWithRoot, termWithAltRoot, fullIrregularTerm } from './TermBuilder';
+import type { Token } from './Conjugation';
 
 describe('TermBuilder', () => {
   describe('constructor', () => {
@@ -21,14 +17,14 @@ describe('TermBuilder', () => {
 
     it('throws error for invalid tokens array', () => {
       // null throws before the check due to property access
-      expect(() => new TermBuilder(null as any)).toThrow();
-      
+      expect(() => new TermBuilder(null as unknown as Token[])).toThrow();
+
       // undefined gets default parameter value [], so it doesn't throw
       // But we can test with other invalid types
-      expect(() => new TermBuilder('invalid' as any)).toThrow(
+      expect(() => new TermBuilder('invalid' as unknown as Token[])).toThrow(
         'Invalid tokens array in constructor'
       );
-      expect(() => new TermBuilder(123 as any)).toThrow(
+      expect(() => new TermBuilder(123 as unknown as Token[])).toThrow(
         'Invalid tokens array in constructor'
       );
     });
@@ -52,11 +48,7 @@ describe('TermBuilder', () => {
     });
 
     it('can chain multiple addRoot calls', () => {
-      const term = new TermBuilder()
-        .addRoot('t')
-        .addRoot('e')
-        .addRoot('st')
-        .endWith('o');
+      const term = new TermBuilder().addRoot('t').addRoot('e').addRoot('st').endWith('o');
       expect(term).toEqual([
         { type: 'root', value: 't' },
         { type: 'root', value: 'e' },
@@ -76,11 +68,7 @@ describe('TermBuilder', () => {
     });
 
     it('can combine root and altRoot', () => {
-      const term = new TermBuilder()
-        .addRoot('t')
-        .addAltRoot('e', 'ie')
-        .addRoot('mbl')
-        .endWith('o');
+      const term = new TermBuilder().addRoot('t').addAltRoot('e', 'ie').addRoot('mbl').endWith('o');
       expect(term).toEqual([
         { type: 'root', value: 't' },
         { type: 'altRoot', value: 'e => ie' },
@@ -118,10 +106,7 @@ describe('TermBuilder', () => {
     });
 
     it('can combine with altRoot', () => {
-      const term = new TermBuilder()
-        .addRoot('d')
-        .addAltRoot('ec', 'i')
-        .endWithAlt('go');
+      const term = new TermBuilder().addRoot('d').addAltRoot('ec', 'i').endWithAlt('go');
       expect(term).toEqual([
         { type: 'root', value: 'd' },
         { type: 'altRoot', value: 'ec => i' },
@@ -164,10 +149,7 @@ describe('termWithRoot', () => {
   });
 
   it('can be chained with other methods', () => {
-    const term = termWithRoot('t')
-      .addAltRoot('e', 'ie')
-      .addRoot('mbl')
-      .endWith('o');
+    const term = termWithRoot('t').addAltRoot('e', 'ie').addRoot('mbl').endWith('o');
     expect(term).toEqual([
       { type: 'root', value: 't' },
       { type: 'altRoot', value: 'e => ie' },
@@ -190,9 +172,7 @@ describe('termWithAltRoot', () => {
   });
 
   it('can be chained with other methods', () => {
-    const term = termWithAltRoot('e', 'ie')
-      .addRoot('mbl')
-      .endWith('o');
+    const term = termWithAltRoot('e', 'ie').addRoot('mbl').endWith('o');
     expect(term).toEqual([
       { type: 'altRoot', value: 'e => ie' },
       { type: 'root', value: 'mbl' },
@@ -208,13 +188,8 @@ describe('fullIrregularTerm', () => {
   });
 
   it('creates a term with different irregular forms', () => {
-    expect(fullIrregularTerm('eres')).toEqual([
-      { type: 'altEnding', value: 'eres' },
-    ]);
-    expect(fullIrregularTerm('es')).toEqual([
-      { type: 'altEnding', value: 'es' },
-    ]);
+    expect(fullIrregularTerm('eres')).toEqual([{ type: 'altEnding', value: 'eres' }]);
+    expect(fullIrregularTerm('es')).toEqual([{ type: 'altEnding', value: 'es' }]);
     expect(fullIrregularTerm('')).toEqual([{ type: 'altEnding', value: '' }]);
   });
 });
-

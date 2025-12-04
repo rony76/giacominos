@@ -43,7 +43,7 @@ describe('removeTilde', () => {
     expect(removeTilde('HablÁ')).toBe('HablÁ'); // uppercase Á is not replaced
     expect(removeTilde('ComÉ')).toBe('ComÉ'); // uppercase É is not replaced
     expect(removeTilde('VivÍ')).toBe('VivÍ'); // uppercase Í is not replaced
-    
+
     // But lowercase tildes are replaced
     expect(removeTilde('hablá')).toBe('habla');
     expect(removeTilde('comé')).toBe('come');
@@ -71,4 +71,3 @@ describe('removeTilde', () => {
     expect(removeTilde('íéá')).toBe('iea');
   });
 });
-
